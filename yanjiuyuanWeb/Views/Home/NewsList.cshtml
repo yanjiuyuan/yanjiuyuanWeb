@@ -48,7 +48,7 @@
             <template>
                 <ul>
                     <li v-for="d in data" v-on:click="openUrl(d.Contents)">
-                        <img :src="d.ImageUrl">
+                        <img :src="d.ImageUrl.replace('~','')">
                         <dl>
                             <dt><a>{{d.Title}}</a></dt>
                             <dd>{{d.Abstract}}...</dd>
