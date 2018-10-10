@@ -1,7 +1,30 @@
 ﻿@{
     ViewBag.Title = "关于我们";
 }
+<style>
+    .text {
+        font-size: 14px;
+    }
 
+    .item {
+        margin-bottom: 18px;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: "";
+    }
+
+    .clearfix:after {
+        clear: both
+    }
+
+    .box-card {
+        width: 500px;
+        margin-top:20px;
+    }
+</style>
 <!-- banner -->
 <div class="zy_banner">
     <img src="../Content/images/web/zy_banner01.jpg">
@@ -52,6 +75,16 @@
                     <el-table-column v-for="p in tableProp" :prop="p.prop" :label="p.label">
                     </el-table-column>
                 </el-table>
+                <el-card class="box-card">
+                    <div slot="header" class="clearfix">
+                        <span>应聘请联系</span>
+                    </div>
+                    <div class="text item">联 系 人:唐小姐</div>
+                    <div class="text item">联系电话:0595-28857088</div>
+                    <div class="text item">电子邮件:kika0031@126.com</div>
+                    <div class="text item">通讯地址:福建省泉州市丰泽区北清东路518号数控一代科技创新中心13楼</div>
+                    <div class="text item"><a href="http://company.qzrc.com/99238.html">大泉州人才网链接</a></div>
+                </el-card>
             </div>
         </div>
     </div>
