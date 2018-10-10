@@ -171,6 +171,7 @@ var mixin = {
         urlParam: {},
         indexLength: 1,
         newsList: ['研究院新闻', '视频短片', '媒体聚焦', '行业信息'],
+        productList: ['综合案例'],
         pageSize: 5,
         totalRows: 0,
         currentPage: 1
