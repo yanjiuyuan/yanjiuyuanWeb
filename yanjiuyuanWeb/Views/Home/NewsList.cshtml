@@ -58,7 +58,7 @@
                             <b>{{d.CreateTime.substring(8,10)}}</b>
                         </span>
                     </li>
-                    <li>
+                    @*<li>
                         <img src="../Content/images/pic03.jpg">
                         <dl>
                             <dt><a href="news">我院副院长王平江参与《名城群英会》节目专访录制</a></dt>
@@ -68,7 +68,7 @@
                             <i>2018-08</i>
                             <b>20</b>
                         </span>
-                    </li>
+                    </li>*@
                 </ul>
                 <!--底部翻頁-->
                 <div style="text-align:right">
@@ -118,6 +118,7 @@
                 }
                 this._getData("/api/NewsAndCaseManage", function (result) {
                     that.data = result.data
+                    that.totalRows = result.count
                 },param)
             },
             openUrl(url) {
