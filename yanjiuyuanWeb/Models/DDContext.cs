@@ -15,6 +15,8 @@ namespace yanjiuyuanWeb.Models
         public virtual DbSet<LeaveWord> LeaveWord { get; set; }
         public virtual DbSet<NewsAndCases> NewsAndCases { get; set; }
 
+        public virtual DbSet<Jobs> Jobs { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LeaveWord>()
