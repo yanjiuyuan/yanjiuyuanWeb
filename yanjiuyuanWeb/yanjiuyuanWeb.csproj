@@ -193,6 +193,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\SwaggerNet.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\JobManangerController.cs" />
     <Compile Include="Controllers\LeaveWordController.cs" />
     <Compile Include="Controllers\NewsAndCaseManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="Models\DDContext.cs" />
     <Compile Include="Models\Error\ErrorModel.cs" />
     <Compile Include="Models\Error\NewErrorModel.cs" />
+    <Compile Include="Models\Jobs.cs" />
     <Compile Include="Models\LeaveWord.cs" />
     <Compile Include="Models\NewsAndCases.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
