@@ -171,7 +171,8 @@ var mixin = {
         urlParam: {},
         indexLength: 1,
         newsList: ['研究院新闻', '视频短片', '媒体聚焦', '行业信息'],
-        productList: ['综合案例'],
+        productList: ['机器人应用', '数控专用设备', '自动化生产线', '数字化车间'],
+        teamList: ['校企合作案例', '人才培养集锦', '荣誉成果专利', '院士专家团队'],
         pageSize: 5,
         totalRows: 0,
         currentPage: 1
@@ -185,7 +186,7 @@ var mixin = {
         getUrlParam() {
             var searchStr = window.location.search
             if (searchStr.length < 1) {
-                this.urlParam.index = 1
+                this.urlParam.index = 0
                 return
             }
             searchStr = searchStr.substring(1)
@@ -203,6 +204,9 @@ var mixin = {
             }
             $("#index" + index).addClass("cur")
             $("#content" + index).show()
+        },
+        openUrl(url) {
+            window.open(url)
         },
         //翻頁相關事件
         getData() {

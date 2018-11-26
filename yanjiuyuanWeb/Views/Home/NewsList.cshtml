@@ -26,21 +26,9 @@
                 <i></i>
             </div>
             <ul>
-                @*<li v-for="(news,i) in newsList" :class="{cur:urlParam.index == i}" :id="'index' + i">
-                    <h2 v-on:click="changeIndex(i)"><a>news</a><i></i></h2>
-                </li> *@
-                <li :class="{cur:urlParam.index == 1}" id="index1">
-                    <h2 v-on:click="changeIndex('1')"><a>研究院新闻</a><i></i></h2>
-                </li>
-                <li :class="{cur:urlParam.index == 2}" id="index2">
-                    <h2 v-on:click="changeIndex('2')"><a>视频短片</a><i></i></h2>
-                </li>
-                <li :class="{cur:urlParam.index == 3}" id="index3">
-                    <h2 v-on:click="changeIndex('3')"><a>媒体聚焦</a><i></i></h2>
-                </li>
-                <li :class="{cur:urlParam.index == 4}" id="index4">
-                    <h2 v-on:click="changeIndex('4')"><a>行业信息</a><i></i></h2>
-                </li>
+                <li v-for="(news,i) in newsList" :class="{cur:urlParam.index == i}" :id="'index' + i">
+                    <h2 v-on:click="changeIndex(i)"><a>{{news}}</a><i></i></h2>
+                </li> 
             </ul>
 
         </div>
@@ -58,17 +46,6 @@
                             <b>{{d.CreateTime.substring(8,10)}}</b>
                         </span>
                     </li>
-                    @*<li>
-                        <img src="../Content/images/pic03.jpg">
-                        <dl>
-                            <dt><a href="news">我院副院长王平江参与《名城群英会》节目专访录制</a></dt>
-                            <dd>2018年8月20日，受泉州广播电视台《名城群英会》邀请，我院副院长王平江参与节目专访录制...</dd>
-                        </dl>
-                        <span>
-                            <i>2018-08</i>
-                            <b>20</b>
-                        </span>
-                    </li>*@
                 </ul>
                 <!--底部翻頁-->
                 <div style="text-align:right">
@@ -102,7 +79,7 @@
         methods: {
             changeIndex(index) {
                 this.urlParam.index = index
-                for (var i = 1; i <= this.indexLength; i++) {
+                for (var i = 0; i <= this.indexLength; i++) {
                     $("#index" + i).removeClass("cur")
                 }
                 $("#index" + index).addClass("cur")
@@ -112,7 +89,7 @@
                 var that = this
                 var param = {
                     bigType: '新闻',
-                    type: this.newsList[this.urlParam.index-1],
+                    type: this.newsList[this.urlParam.index],
                     pageIndex: this.currentPage,
                     pageSize: this.pageSize
                 }
@@ -120,9 +97,6 @@
                     that.data = result.data
                     that.totalRows = result.count
                 },param)
-            },
-            openUrl(url) {
-                window.open(url)
             }
         },
         created: function () {
