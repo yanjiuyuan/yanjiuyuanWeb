@@ -1,7 +1,30 @@
 ﻿@{
     ViewBag.Title = "关于我们";
 }
+<style>
+    .text {
+        font-size: 14px;
+    }
 
+    .item {
+        margin-bottom: 18px;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: "";
+    }
+
+    .clearfix:after {
+        clear: both
+    }
+
+    .box-card {
+        width: 500px;
+        margin-top:20px;
+    }
+</style>
 <!-- banner -->
 <div class="zy_banner">
     <img src="../Content/images/web/zy_banner01.jpg">
@@ -46,12 +69,22 @@
                 <p>资料下载</p>
             </div>
             <div v-show="urlParam.index == 3" id="content3">
-                <el-table :data="tableData"
+                <el-table :data="data"
                           stripe
                           style="width: 100%">
                     <el-table-column v-for="p in tableProp" :prop="p.prop" :label="p.label">
                     </el-table-column>
                 </el-table>
+                <el-card class="box-card">
+                    <div slot="header" class="clearfix">
+                        <span>应聘请联系</span>
+                    </div>
+                    <div class="text item">联 系 人:唐小姐</div>
+                    <div class="text item">联系电话:0595-28857088</div>
+                    <div class="text item">电子邮件:kika0031@126.com</div>
+                    <div class="text item">通讯地址:福建省泉州市丰泽区北清东路518号数控一代科技创新中心13楼</div>
+                    <div class="text item"><a href="http://company.qzrc.com/99238.html">大泉州人才网链接</a></div>
+                </el-card>
             </div>
         </div>
     </div>
@@ -66,64 +99,43 @@
             return {
                 tableProp: [
                     {
-                        prop: 'name',
+                        prop: 'JobName',
                         label: '职位名称'
                     },
                     {
-                        prop: 'require',
+                        prop: 'Require',
                         label: '要求'
                     },
                     {
-                        prop: 'address',
+                        prop: 'WorkPlace',
                         label: '工作地点'
                     },
                     {
-                        prop: 'salary',
+                        prop: 'Pay',
                         label: '薪资'
                     },
                     {
-                        prop: 'date',
+                        prop: 'CreateTime',
                         label: '发布日期'
                     }
                 ],
-                tableData: [
-                     {
-                        name: '销售经理（教学市场）',
-                        require: '本科 | 招5人',
-                        address: '泉州',
-                        salary: '3-6千/月',
-                        date: '2018-10-24'
-                    },
-                    {
-                        name: '网页前端工程师',
-                        require: '本科 | 招1人',
-                        address: '泉州',
-                        salary: '5.5-6千/月',
-                        date: '2018-10-24'
-                    },
-                    {
-                        name: '嵌入式系统工程师（数控一代事业部）',
-                        require: '3-4年经验 | 本科 | 招1人',
-                        address: '泉州',
-                        salary: '7-9千/月',
-                        date: '2018-10-24'
-                    },
-                    {
-                        name: '机器人运动控制算法工程师',
-                        require: '招1人',
-                        address: '泉州',
-                        salary: '4.5-6千/月',
-                        date: '2018-10-24'
-                    }
+                data: [
+                    
                 ]
             }
         },
         methods: {
-
+            getData() {
+                var that = this
+                this._getData("/Job/Read", function (result) {
+                    that.data = result.data
+                    that.totalRows = result.count
+                })
+            },
         },
         created: function () {
             this.indexLength = 3
-
+            this.getData()
         }
     })
 
