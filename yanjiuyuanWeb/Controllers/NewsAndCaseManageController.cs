@@ -23,11 +23,13 @@ namespace yanjiuyuanWeb.Controllers
         /// <param name="newsAndCases"></param>
         /// <returns></returns>
         [HttpPost]
+        [Route("Save")]
         public object Save([FromBody] NewsAndCases newsAndCases)
         {
             try
             {
                 EFHelper<NewsAndCases> eFHelper = new EFHelper<NewsAndCases>();
+                newsAndCases.CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 eFHelper.Add(newsAndCases);
                 return new NewErrorModel()
                 {
@@ -53,6 +55,7 @@ namespace yanjiuyuanWeb.Controllers
         /// <param name="pageSize">页容量</param>
         /// <returns></returns>
         [HttpGet]
+        [Route("Read")]
         public object Read(string bigType, string type, int pageIndex, int pageSize)
         {
             try
@@ -85,6 +88,7 @@ namespace yanjiuyuanWeb.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
+        [Route("ReadById")]
         public object ReadById(int id)
         {
             try
@@ -105,5 +109,38 @@ namespace yanjiuyuanWeb.Controllers
                 };
             }
         }
+
+        /// <summary>
+        /// 访问累加接口
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("AddVisitingtime")]
+        public object AddVisitingtime(int id)
+        {
+            try
+            {
+                EFHelper<NewsAndCases> eFHelper = new EFHelper<NewsAndCases>();
+                NewsAndCases newsAndCases = eFHelper.GetListById(id);
+                newsAndCases.visitingtime = (newsAndCases.visitingtime==null?0: newsAndCases.visitingtime) + 1;
+
+                eFHelper.Modify(newsAndCases);
+                return new NewErrorModel()
+                {
+                    data = newsAndCases,
+                    error = new Error(0, "累加成功！", "") { },
+                };
+            }
+            catch (Exception ex)
+            {
+                return new NewErrorModel()
+                {
+                    error = new Error(1, ex.Message, "") { },
+                };
+            }
+        }
+
+
     }
 }
