@@ -28,14 +28,15 @@
             <ul>
                 <li v-for="(news,i) in newsList" :class="{cur:urlParam.index == i}" :id="'index' + i">
                     <h2 v-on:click="changeIndex(i)"><a>{{news}}</a><i></i></h2>
-                </li> 
+                </li>
             </ul>
 
         </div>
         <div class="zy_conbox zy_news">
             <template>
                 <ul>
-                    <li v-for="d in data" v-on:click="openUrl(d.Contents)">
+                    <li v-for="d in data">
+                        <em style="display:none">{{d.Contents}}</em>
                         <img :src="d.ImageUrl.replace('~','')">
                         <dl>
                             <dt><a>{{d.Title}}</a></dt>
@@ -59,7 +60,6 @@
                     </el-pagination>
                 </div>
             </template>
-            
         </div>
 
     </div>
@@ -96,7 +96,7 @@
                 this._getData("/api/NewsAndCaseManage", function (result) {
                     that.data = result.data
                     that.totalRows = result.count
-                },param)
+                }, param)
             }
         },
         created: function () {
@@ -107,8 +107,12 @@
 
 
 </script>
-
+<script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
 <script type="text/javascript">
-
-
+    $("body").on("click", ".zy_conbox li", function(){
+        var NewsUrl = $(this).find("em").html();
+        NewsUrl = NewsUrl.substring(1);
+        NewsUrl = "http://www.hustqz.com/Home/html?" + NewsUrl;
+        window.open(NewsUrl); 
+    });
 </script>
