@@ -124,7 +124,6 @@ namespace yanjiuyuanWeb.Controllers
                 EFHelper<NewsAndCases> eFHelper = new EFHelper<NewsAndCases>();
                 NewsAndCases newsAndCases = eFHelper.GetListById(id);
                 newsAndCases.visitingtime = (newsAndCases.visitingtime==null?0: newsAndCases.visitingtime) + 1;
-
                 eFHelper.Modify(newsAndCases);
                 return new NewErrorModel()
                 {
