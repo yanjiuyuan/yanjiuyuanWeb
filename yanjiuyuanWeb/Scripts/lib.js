@@ -233,9 +233,11 @@ var mixin = {
         _getData(url, callBack, param = {}, alertStr, alertTitle = '提示信息') {
             var that = this
             url = url += _formatQueryStr(param)
+            console.log(url)
             $.ajax({
                 url: url,
                 dataType: "json",
+                contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if (typeof (data) == 'string') data = JSON.parse(data)
                     console.log(url)
