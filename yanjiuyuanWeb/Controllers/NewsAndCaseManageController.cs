@@ -16,7 +16,6 @@ namespace yanjiuyuanWeb.Controllers
     [RoutePrefix("NewsAndCases")]
     public class NewsAndCaseManageController : ApiController
     {
-
         /// <summary>
         /// 新闻与应用案例保存
         /// </summary>
