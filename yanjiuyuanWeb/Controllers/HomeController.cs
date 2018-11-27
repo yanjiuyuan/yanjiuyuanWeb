@@ -51,5 +51,10 @@ namespace yanjiuyuanWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult html()
+        {
+            return View();
+        }
     }
 }
