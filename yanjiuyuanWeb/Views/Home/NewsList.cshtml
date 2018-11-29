@@ -37,6 +37,7 @@
                 <ul>
                     <li v-for="d in data">
                         <em style="display:none">{{d.Contents}}</em>
+                        <ins style="display:none">{{d.Id}}</ins>
                         <img :src="d.ImageUrl.replace('~','')">
                         <dl>
                             <dt><a>{{d.Title}}</a></dt>
@@ -93,7 +94,7 @@
                     pageIndex: this.currentPage,
                     pageSize: this.pageSize
                 }
-                this._getData("/api/NewsAndCaseManage", function (result) {
+                this._getData("/NewsAndCases/Read", function (result) {
                     that.data = result.data
                     that.totalRows = result.count
                 }, param)
@@ -107,12 +108,12 @@
 
 
 </script>
-<script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
 <script type="text/javascript">
     $("body").on("click", ".zy_conbox li", function(){
         var NewsUrl = $(this).find("em").html();
+        var NewsId = $(this).find("ins").html();
         NewsUrl = NewsUrl.substring(1);
-        NewsUrl = "http://www.hustqz.com/Home/html?" + NewsUrl;
+        NewsUrl = HZNewUrl+NewsId+"&"+ NewsUrl;
         window.open(NewsUrl); 
     });
 </script>

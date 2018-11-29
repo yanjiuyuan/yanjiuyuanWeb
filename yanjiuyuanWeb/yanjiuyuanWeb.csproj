@@ -374,6 +374,8 @@
     <Content Include="Views\Home\TeamPower.cshtml" />
     <Content Include="Views\Home\PartyCreate.cshtml" />
     <Content Include="Views\Home\Notify.cshtml" />
+    <Content Include="Views\Home\newsDe.cshtml" />
+    <Content Include="Views\Home\caseDe.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

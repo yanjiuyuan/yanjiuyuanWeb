@@ -246,7 +246,12 @@
             }
         },
          created: function () {
-             
+             var url = location.href
+             setInterval(function () {
+                 if (url.indexOf('hustqz') < 0) {
+                     //location.href = 'http://www.hustqz.com'
+                 }
+             },300)
         }
     })
     console.log('hello?')
