@@ -20,7 +20,7 @@
             <div class="weizhi">
                 <div>
                     <p>
-                        <img src="../Content/images/web/PIN2.png">当前位置：<a href="index">首页</a> ><span>新闻中心</span>
+                        <img src="../Content/images/web/PIN2.png">当前位置：<a href="index">首页</a> ><span>产品中心</span>
                     </p>
                 </div>
                 <i></i>
@@ -34,7 +34,9 @@
         <div class="zy_conbox zy_news">
             <template>
                 <ul>
-                    <li v-for="d in data" v-on:click="openUrl(d.Contents)">
+                    <li v-for="d in data"><!--v-on:click="openUrl(d.Contents)"-->
+                        <em style="display:none">{{d.Contents}}</em>
+                        <ins style="display:none">{{d.Id}}</ins>
                         <img :src="d.ImageUrl.replace('~','')">
                         <dl>
                             <dt><a>{{d.Title}}</a></dt>
@@ -91,7 +93,7 @@
                     pageIndex: this.currentPage,
                     pageSize: this.pageSize
                 }
-                this._getData("/api/NewsAndCaseManage", function (result) {
+                this._getData("/NewsAndCases/Read", function (result) {
                     that.data = result.data
                     that.totalRows = result.count
                 }, param)
@@ -107,5 +109,14 @@
     })
 
 
+</script>
+<script type="text/javascript">
+    $("body").on("click", ".zy_conbox li", function () {
+        var NewsUrl = $(this).find("em").html();
+        var NewsId = $(this).find("ins").html();
+        NewsUrl = NewsUrl.substring(1);
+        NewsUrl = HZCaseUrl + NewsId + "&" + NewsUrl;
+        window.open(NewsUrl);
+    });
 </script>
 

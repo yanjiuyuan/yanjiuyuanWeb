@@ -52,7 +52,11 @@ namespace yanjiuyuanWeb.Controllers
             return View();
         }
 
-        public ActionResult html()
+        public ActionResult newsDe()
+        {
+            return View();
+        }
+        public ActionResult caseDe()
         {
             return View();
         }
