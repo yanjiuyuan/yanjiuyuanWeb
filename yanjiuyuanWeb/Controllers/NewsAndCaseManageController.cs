@@ -92,6 +92,7 @@ namespace yanjiuyuanWeb.Controllers
         {
             try
             {
+
                 EFHelper<NewsAndCases> eFHelper = new EFHelper<NewsAndCases>();
                 NewsAndCases newsAndCases = eFHelper.GetListById(id);
                 return new NewErrorModel()
