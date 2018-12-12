@@ -63,6 +63,18 @@
                 <img class="img-center" src="../Content/images/organization.png">
             </div>
             <div v-show="urlParam.index == 3" id="content3">
+                <div class="" id="marquee1">
+                    <ul>
+                        <li><a href=""><img src="../Content/img/About01.png" /></a></li>
+                        <li><a href=""><img src="../Content/img/About02.png" /></a></li>
+                        <li><a href=""><img src="../Content/img/About03.png" /></a></li>
+                        <li><a href=""><img src="../Content/img/About04.png" /></a></li>
+                        <li><a href=""><img src="../Content/img/About05.png" /></a></li>
+                        <li><a href=""><img src="../Content/img/About06.png" /></a></li>
+                        <li><a href=""><img src="../Content/img/About07.png" /></a></li>
+                        <li><a href=""><img src="../Content/img/About08.png" /></a></li>
+                    </ul>
+                </div>
                 <div class="main">
                     <ul class="time-axis"></ul>
                 </div>
@@ -119,7 +131,6 @@
     </div>
 </div>
 
-
 <script>
     var demo = new Vue({
         el: "#partPage",
@@ -161,7 +172,7 @@
         },
         created: function () {
             this.indexLength = 5
-            
+
         }
     })
 
@@ -171,65 +182,65 @@
 <script type="text/javascript">
     //这是要遍历时间轴的数据
     var dimeAxis = [{
-            date: '2014年11月',
-            title: '研究院第一届理事会第一次会议召开，研究院正式成立',
-            achievement: ''
-        },
-        {
-            date: '2015年03月',
-            title: '研究院正式入驻泉州市丰泽区数控一代创新中心',
-            achievement: ''
-        },
-        {
-            date: '2015年08月',
-            title: '研究院综试基地在洛江落成 ',
-            achievement: ''
-        },
-        {
-            date: '2016年06月',
-            title: '全国政协副主席、国家科技部部长万刚视察研究院产业基地、引进中国工程院段正澄院士团队建立院士工作站',
-            achievement: ''
-        },
-        {
-            date: '2016年06月',
-            title: '成立福建省院士工作站',
-            achievement: ''
-        },
-        {
-            date: '2017年06月',
-            title: '获批福建省首批新型研发机构、与南安市政府合作设立“华中科大南安市高端装备研究所、与泉州市模具工业协会成为战略合作伙伴、成为石狮市智能产业技术创新战略联盟技术合作单位',
-            achievement: ''
-        },
-        {
-            date: '2017年08月',
-            title: '成为福建省智能装备数字化工程研究中心',
-            achievement: ''
-        },
-        {
-            date: '2017年09月',
-            title: '成为泉州市智能制造公共实训基地',
-            achievement: ''
-        },
-        {
-            date: '2015-2018',
-            title: '与泉州师范学院、宁德师范学院、闽南理工学院、泉州信息工程学院、黎明职业大学、泉州理工职业学院、泉州轻工职业学院、福建省长汀职业中专学校等院校共建实训实地',
-            achievement: ''
-        },
-        {
-            date: '2018年05月',
-            title: '成为福建省智能制造创新创业能力平台建设项目”实施单位',
-            achievement: ''
-        },
-        {
-            date: '2018年06月',
-            title: '泉州市丰泽区国家双创示范基地、中共泉州市委人才工作领导小组认定成为首批泉州市院士示范工作站',
-            achievement: ''
-        },
-        {
-            date: '2018年07月',
-            title: '获得中国科协企业工作办公室院士专家工作站认证资格',
-            achievement: ''
-        }];
+        date: '2014年11月',
+        title: '研究院第一届理事会第一次会议召开，研究院正式成立',
+        achievement: ''
+    },
+    {
+        date: '2015年03月',
+        title: '研究院正式入驻泉州市丰泽区数控一代创新中心',
+        achievement: ''
+    },
+    {
+        date: '2015年08月',
+        title: '研究院综试基地在洛江落成 ',
+        achievement: ''
+    },
+    {
+        date: '2016年06月',
+        title: '全国政协副主席、国家科技部部长万刚视察研究院产业基地、引进中国工程院段正澄院士团队建立院士工作站',
+        achievement: ''
+    },
+    {
+        date: '2016年06月',
+        title: '成立福建省院士工作站',
+        achievement: ''
+    },
+    {
+        date: '2017年06月',
+        title: '获批福建省首批新型研发机构、与南安市政府合作设立“华中科大南安市高端装备研究所、与泉州市模具工业协会成为战略合作伙伴、成为石狮市智能产业技术创新战略联盟技术合作单位',
+        achievement: ''
+    },
+    {
+        date: '2017年08月',
+        title: '成为福建省智能装备数字化工程研究中心',
+        achievement: ''
+    },
+    {
+        date: '2017年09月',
+        title: '成为泉州市智能制造公共实训基地',
+        achievement: ''
+    },
+    {
+        date: '2015-2018',
+        title: '与泉州师范学院、宁德师范学院、闽南理工学院、泉州信息工程学院、黎明职业大学、泉州理工职业学院、泉州轻工职业学院、福建省长汀职业中专学校等院校共建实训实地',
+        achievement: ''
+    },
+    {
+        date: '2018年05月',
+        title: '成为福建省智能制造创新创业能力平台建设项目”实施单位',
+        achievement: ''
+    },
+    {
+        date: '2018年06月',
+        title: '泉州市丰泽区国家双创示范基地、中共泉州市委人才工作领导小组认定成为首批泉州市院士示范工作站',
+        achievement: ''
+    },
+    {
+        date: '2018年07月',
+        title: '获得中国科协企业工作办公室院士专家工作站认证资格',
+        achievement: ''
+    }];
 
 
     $(function () {
@@ -242,4 +253,13 @@
             $('.time-axis').append(html);
         });
     });
+</script>
+<script src="~/Scripts/jquery.kxbdMarquee.js"></script>
+<script>
+
+    (function () {
+
+        $("#marquee1").kxbdMarquee({ direction: "left", isEqual: false });
+
+    })();
 </script>

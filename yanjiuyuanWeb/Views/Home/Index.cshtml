@@ -4,36 +4,39 @@
 
 <div id="partPage" class="content">
     <!-- banner -->
-    <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1920px; height: 906px; overflow: hidden; visibility: hidden; background-color: #24262e;">
+    <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1920px; height: 506px; overflow: hidden; visibility: hidden; background-color: #24262e;">
         <!-- Loading Screen -->
         <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
             <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
             <div style="position:absolute;display:block;background:url('../Content/img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
         </div>
-        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 1920px; height: 756px; overflow: hidden;">
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 1920px; height: 506px; overflow: hidden;">
             <div data-p="144.50">
-                <img data-u="image" src="../Content/img/01.jpg" />
-                <img data-u="thumb" src="../Content/img/thumb-01.jpg" />
+                <img data-u="image" src="../Content/img/bn-01.jpg" />
+                <img data-u="thumb" src="../Content/img/thumbn-01.png" />
             </div>
             <div data-p="144.50" style="display: none;">
-                <img data-u="image" src="../Content/img/02.jpg" />
-                <img data-u="thumb" src="../Content/img/thumb-02.jpg" />
+                <img data-u="image" src="../Content/img/bn-02.jpg" />
+                <img data-u="thumb" src="../Content/img/thumbn-02.png" />
             </div>
-
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="../Content/img/bn-03.png" />
+                <img data-u="thumb" src="../Content/img/thumbn-03.png" />
+            </div>
         </div>
         <!-- Thumbnail Navigator -->
-        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:1920px;height:150px;" data-autocenter="1">
-            <!-- Thumbnail Item Skin Begin -->
-            <div data-u="slides" style="cursor: default;">
-                <div data-u="prototype" class="p">
-                    <div class="w">
-                        <div data-u="thumbnailtemplate" class="t"></div>
+        @*<div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:1920px;height:150px;" data-autocenter="1">
+                <!-- Thumbnail Item Skin Begin -->
+                <div data-u="slides" style="cursor: default;">
+                    <div data-u="prototype" class="p">
+                        <div class="w">
+                            <div data-u="thumbnailtemplate" class="t"></div>
+                        </div>
+                        <div class="c"></div>
                     </div>
-                    <div class="c"></div>
                 </div>
-            </div>
-            <!-- Thumbnail Item Skin End -->
-        </div>
+                <!-- Thumbnail Item Skin End -->
+            </div>*@
         <!-- Arrow Navigator -->
         <span data-u="arrowleft" class="jssora05l" style="top:208px;left:12px;width:60px;height:60px;"></span>
         <span data-u="arrowright" class="jssora05r" style="top:208px;right:12px;width:60px;height:60px;"></span>
@@ -41,6 +44,126 @@
 
     <!-- #endregion Jssor Slider End -->
     <!-- banner end -->
+    <div class="index_news">
+        <div class="wid_main">
+            <div class="index_title">
+                <div>
+                    <h1>资讯中心</h1>
+                    <span>NEWS CENTER</span>
+                </div>
+            </div>
+
+            <div class="multipleColumn">
+                <div class="bd">
+                    <div class="ulWrap">
+                        <ul v-for="news in NewsList">
+                            <li v-for="d in news">
+                                <em style="display:none">{{d.Contents}}</em>
+                                <ins style="display:none">{{d.Id}}</ins>
+                                <div>
+                                    <a href="javascript:;">
+                                        <img :src="d.ImageUrl.replace('~','')">
+                                        <h2>{{d.Title}}</h2>
+                                        <span>{{d.CreateTime}}</span>
+                                        <i></i>
+                                    </a>
+                                </div>
+                                <p>{{d.Abstract}}...</p>
+                            </li>
+                        </ul>
+                        @*<ul>
+                                <!-- 把每次滚动的n个li放到1个ul里面 -->
+                                <li>
+                                    <div>
+                                        <a href="news">
+                                            <img src="~/Content/images/pic03.jpg">
+                                            <h2>我院副院长王平江参与《名城群英会》节目专访录制</h2>
+                                            <span>2018-08-20</span>
+                                            <i></i>
+                                        </a>
+                                    </div>
+                                    <p>2018年8月20日，受泉州广播电视台《名城群英会》邀请，我院副院长王平江参与节目专访录制...</p>
+
+                                </li>
+                                <li>
+                                    <div>
+                                        <a href="news">
+                                            <img src="~/Content/images/pic02.jpg">
+                                            <h2>周济抵闽调研智能制造产业发展情况并肯定我院研发成果</h2>
+                                            <span>2017-06-18</span>
+                                            <i></i>
+                                        </a>
+                                    </div>
+                                    <p>2017年6月18日下午，中国工程院院长周济在福建省副省长洪捷序陪同下，到“618”展馆巡视...</p>
+
+                                </li>
+                            </ul>
+                            <ul>
+                                <!-- 把每次滚动的n个li放到1个ul里面 -->
+                                <li>
+                                    <div>
+                                        <a href="news">
+                                            <img src="~/Content/images/pic01.jpg">
+                                            <h2>福建工业学校林俊标校长一行莅临我院参观指导</h2>
+                                            <span>2018-02-24</span>
+                                            <i></i>
+                                        </a>
+                                    </div>
+                                    <p>为了更好地促进福建工业学校与泉州华中科技大学智能制造研究院开展校企合作...</p>
+
+                                </li>
+                                <li>
+                                    <div>
+                                        <a href="news">
+                                            <img src="~/Content/images/pic03.jpg">
+                                            <h2>寻访红色足迹，传承红色圣火</h2>
+                                            <span>2018-02-24</span>
+                                            <i></i>
+                                        </a>
+                                    </div>
+                                    <p>正值泉州华中科技大学智能制造研究院党支部建立之际，为了庆祝中国共产党建党96周年纪念日...</p>
+
+                                </li>
+                            </ul>
+                            <ul>
+                                <!-- 把每次滚动的n个li放到1个ul里面 -->
+                                <li>
+                                    <div>
+                                        <a href="news">
+                                            <img src="~/Content/images/pic03.jpg">
+                                            <h2>周济抵闽调研智能制造产业发展情况并肯定我院研发成果</h2>
+                                            <span>2018-02-24</span>
+                                            <i></i>
+                                        </a>
+                                    </div>
+                                    <p>2017年6月18日下午，中国工程院院长周济在福建省副省长洪捷序陪同下，到“618”展馆巡视...</p>
+
+                                </li>
+                                <li>
+                                    <div>
+                                        <a href="news">
+                                            <img src="~/Content/images/pic02.jpg">
+                                            <h2>福建工业学校林俊标校长一行莅临我院参观指导</h2>
+                                            <span>2018-02-24</span>
+                                            <i></i>
+                                        </a>
+                                    </div>
+                                    <p>为了更好地促进福建工业学校与泉州华中科技大学智能制造研究院开展校企合作...</p>
+
+                                </li>
+                            </ul>*@
+                    </div><!-- ulWrap End -->
+                </div><!-- bd End -->
+                <div class="hd">
+                    <span class="next img xjt_l"></span>
+                    <a href="/Home/newsList" class="img more_grid"></a>
+                    <span class="prev img xjt_r"></span>
+                </div>
+            </div><!-- multipleColumn End -->
+
+
+        </div>
+    </div>
     <div class="index_cpbox">
         <div class="wid_main">
             <div class="index_title">
@@ -52,56 +175,68 @@
             <div class="cp_pic_box">
                 <div class="bd">
                     <ul class="picList">
-                        <li>
-                            <a href="caseDetail">
-                                <div class="pic"><img src="~/Content/images/product/大型石板材智能扫描仪.png" /></div>
+                        <li v-for="d in casel">
+                            <em style="display:none">{{d.Contents}}</em>
+                            <ins style="display:none">{{d.Id}}</ins>
+                            <a href="javascript:;">
+                                <div class="pic"><img :src="d.ImageUrl.replace('~','')"></div>
                                 <div class="title">
-                                    <h2>大型石板材智能扫描仪</h2>
+                                    <h2>{{d.Title}}</h2>
                                     <i></i>
-                                    <p>这是一台 大型石板材智能扫描仪...</p>
+                                    <p>{{d.Abstract}}...</p>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="caseDetail">
-                                <div class="pic"><img src="~/Content/images/product/阀芯智能装配生产线.png" /></div>
-                                <div class="title">
-                                    <h2>阀芯智能装配生产线</h2>
-                                    <i></i>
-                                    <p>这是 阀芯智能装配生产线...</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="caseDetail">
-                                <div class="pic"><img src="~/Content/images/product/金刚石切割刀片喷漆、浸泡生产线.png" /></div>
-                                <div class="title">
-                                    <h2>金刚石切割刀片喷漆、浸泡生产线</h2>
-                                    <i></i>
-                                    <p>这是 金刚石切割刀片喷漆、浸泡生产线...</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="caseDetail">
-                                <div class="pic"><img src="~/Content/images/product/栏杆石柱专用磨抛设备研发.png" /></div>
-                                <div class="title">
-                                    <h2>栏杆石柱专用磨抛设备</h2>
-                                    <i></i>
-                                    <p>这是 栏杆石柱专用磨抛设备...</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="caseDetail">
-                                <div class="pic"><img src="~/Content/images/product/磨边机.png" /></div>
-                                <div class="title">
-                                    <h2>磨边机</h2>
-                                    <i></i>
-                                    <p>这是 磨边机...</p>
-                                </div>
-                            </a>
-                        </li>
+                        @*<li>
+            <a href="caseDetail">
+                <div class="pic"><img src="~/Content/images/product/大型石板材智能扫描仪.png" /></div>
+                <div class="title">
+                    <h2>大型石板材智能扫描仪</h2>
+                    <i></i>
+                    <p>这是一台 大型石板材智能扫描仪...</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="caseDetail">
+                <div class="pic"><img src="~/Content/images/product/阀芯智能装配生产线.png" /></div>
+                <div class="title">
+                    <h2>阀芯智能装配生产线</h2>
+                    <i></i>
+                    <p>这是 阀芯智能装配生产线...</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="caseDetail">
+                <div class="pic"><img src="~/Content/images/product/金刚石切割刀片喷漆、浸泡生产线.png" /></div>
+                <div class="title">
+                    <h2>金刚石切割刀片喷漆、浸泡生产线</h2>
+                    <i></i>
+                    <p>这是 金刚石切割刀片喷漆、浸泡生产线...</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="caseDetail">
+                <div class="pic"><img src="~/Content/images/product/栏杆石柱专用磨抛设备研发.png" /></div>
+                <div class="title">
+                    <h2>栏杆石柱专用磨抛设备</h2>
+                    <i></i>
+                    <p>这是 栏杆石柱专用磨抛设备...</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="caseDetail">
+                <div class="pic"><img src="~/Content/images/product/磨边机.png" /></div>
+                <div class="title">
+                    <h2>磨边机</h2>
+                    <i></i>
+                    <p>这是 磨边机...</p>
+                </div>
+            </a>
+        </li>*@
                     </ul>
                 </div>
                 <div class="hd">
@@ -123,8 +258,24 @@
                 </div>
             </div>
             <div class="about_box">
-                <div class="leftpic">
-                    <span><img src="~/Content/images/aboutpic.jpg"></span>
+                @*<div class="leftpic">
+                        <span><img src="~/Content/images/aboutpic.jpg"></span>
+                    </div>*@
+                <div id="box" class="leftpic">
+                    <div class="prev"></div>
+                    <div class="next"></div>
+                    <ul class="bigUl">
+                        <li style="z-index:1"><a href="#"><img src="~/Content/img/COMPANY1.png" /></a></li>
+                        <li><a href="#"><img src="~/Content/img/COMPANY2.png" /></a></li>
+                        <li><a href="#"><img src="~/Content/img/COMPANY3.png" /></a></li>
+                        <li><a href="#"><img src="~/Content/img/COMPANY4.png" /></a></li>
+                    </ul>
+                    <ul class="numberUl">
+                        <li class="night"><a href="javascript:;">1</a></li>
+                        <li><a href="javascript:;">2</a></li>
+                        <li><a href="javascript:;">3</a></li>
+                        <li><a href="javascript:;">4</a></li>
+                    </ul>
                 </div>
                 <div class="righttxt">
                     <div class="txt">
@@ -132,7 +283,7 @@
                             泉州华中科技大学智能制造研究院（以下简称泉州研究院），是泉州市人民政府与华中科技大学合作共建，于2014年11月20日成立的事业单位，是以集聚国内外高校、科研院所和创新团队的科技创新资源，面向泉州市经济发展和“数控一代”机械产品升级创新工程以及“泉州制造2025”的需求，打造具有强大技术创新、成果转化和产业化的支撑与服务平台，以实现“政、产、学、研、用、金”有机融合、“无缝”对接，提升泉州制造业的综合竞争力，促进泉州产业转型升级。
                         </p>
                         <p>我们配合泉州市或福建省，组织并参与智能制造推进制造业转型升级各类宣讲活动，为泉州实施“数控一代”应用示范工程和创建泉州市 “中国制造2025”试点示范城市等工作做出了重要贡献。</p>
-        
+
                     </div>
                     <a href="/Home/about">了解更多详情>></a>
                 </div>
@@ -140,112 +291,6 @@
         </div>
     </div>
     <!-- news -->
-    <div class="index_news">
-        <div class="wid_main">
-            <div class="index_title">
-                <div>
-                    <h1>资讯中心</h1>
-                    <span>NEWS CENTER</span>
-                </div>
-            </div>
-
-            <div class="multipleColumn">
-                <div class="bd">
-                    <div class="ulWrap">
-                        <ul>
-                            <!-- 把每次滚动的n个li放到1个ul里面 -->
-                            <li>
-                                <div>
-                                    <a href="news">
-                                        <img src="~/Content/images/pic03.jpg">
-                                        <h2>我院副院长王平江参与《名城群英会》节目专访录制</h2>
-                                        <span>2018-08-20</span>
-                                        <i></i>
-                                    </a>
-                                </div>
-                                <p>2018年8月20日，受泉州广播电视台《名城群英会》邀请，我院副院长王平江参与节目专访录制...</p>
-
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="news">
-                                        <img src="~/Content/images/pic02.jpg">
-                                        <h2>周济抵闽调研智能制造产业发展情况并肯定我院研发成果</h2>
-                                        <span>2017-06-18</span>
-                                        <i></i>
-                                    </a>
-                                </div>
-                                <p>2017年6月18日下午，中国工程院院长周济在福建省副省长洪捷序陪同下，到“618”展馆巡视...</p>
-
-                            </li>
-                        </ul>
-                        <ul>
-                            <!-- 把每次滚动的n个li放到1个ul里面 -->
-                            <li>
-                                <div>
-                                    <a href="news">
-                                        <img src="~/Content/images/pic01.jpg">
-                                        <h2>福建工业学校林俊标校长一行莅临我院参观指导</h2>
-                                        <span>2018-02-24</span>
-                                        <i></i>
-                                    </a>
-                                </div>
-                                <p>为了更好地促进福建工业学校与泉州华中科技大学智能制造研究院开展校企合作...</p>
-
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="news">
-                                        <img src="~/Content/images/pic03.jpg">
-                                        <h2>寻访红色足迹，传承红色圣火</h2>
-                                        <span>2018-02-24</span>
-                                        <i></i>
-                                    </a>
-                                </div>
-                                <p>正值泉州华中科技大学智能制造研究院党支部建立之际，为了庆祝中国共产党建党96周年纪念日...</p>
-
-                            </li>
-                        </ul>
-                        <ul>
-                            <!-- 把每次滚动的n个li放到1个ul里面 -->
-                            <li>
-                                <div>
-                                    <a href="news">
-                                        <img src="~/Content/images/pic03.jpg">
-                                        <h2>周济抵闽调研智能制造产业发展情况并肯定我院研发成果</h2>
-                                        <span>2018-02-24</span>
-                                        <i></i>
-                                    </a>
-                                </div>
-                                <p>2017年6月18日下午，中国工程院院长周济在福建省副省长洪捷序陪同下，到“618”展馆巡视...</p>
-
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="news">
-                                        <img src="~/Content/images/pic02.jpg">
-                                        <h2>福建工业学校林俊标校长一行莅临我院参观指导</h2>
-                                        <span>2018-02-24</span>
-                                        <i></i>
-                                    </a>
-                                </div>
-                                <p>为了更好地促进福建工业学校与泉州华中科技大学智能制造研究院开展校企合作...</p>
-
-                            </li>
-                        </ul>
-                    </div><!-- ulWrap End -->
-                </div><!-- bd End -->
-                <div class="hd">
-                    <span class="next img xjt_l"></span>
-                    <a href="/Home/newsList" class="img more_grid"></a>
-                    <span class="prev img xjt_r"></span>
-                </div>
-            </div><!-- multipleColumn End -->
-
-
-        </div>
-    </div>
-
 </div>
 
 <script>
@@ -254,32 +299,119 @@
         mixins: [mixin],
         data: function () {
             return {
-                bannerList: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12',]
+                bannerList: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12',],
+                NewsList: [[], [], [], [], []],
+                casel: []
             }
         },
         methods: {
+            getDataFnc: function () {
+                //发送get请求
+                var that = this
+                $.ajax({
+                    type: "GET",
+                    url: "/NewsAndCases/Read",
+                    data: { bigType: "新闻", type: "研究院新闻", pageIndex: "1", pageSize: "10" },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        let NewsList = [[], [], [], [], []]
+                        for (let d = 0; d < data.data.length; d++) {
+                            var j = Math.floor(d / 2)
+                            console.log(j)
+                            NewsList[j].push(data.data[d])
+                        }
+                        that.NewsList = NewsList
+                        console.log(NewsList);
+                    }
+                })
+            },
+            caseList: function () {
+                //发送get请求
+                var that = this
+                $.ajax({
+                    type: "GET",
+                    url: "/NewsAndCases/Read",
+                    data: { bigType: "产品", type: "机器人应用", pageIndex: "1", pageSize: "16" },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        let casel = []
+                        for (let d = 0; d < data.data.length; d++) {
+                            casel.push(data.data[d])
+                        }
+                        that.casel = casel
+                        console.log(casel);
+                    }
+                });
+                
+            }
 
 
         },
         created: function () {
-
+            this.getDataFnc()
+            this.caseList()
             
         }
     })
+   $.ajax({
+        type: "GET",
+        url: "/NewsAndCases/Read",
+        data: { bigType: "新闻", type: "研究院新闻", pageIndex: "1", pageSize: "16" },
+        dataType: "json",
+        success: function (data) {
+            newsL()
+            caseL()
+        }
+    });
 
+        /*var html = "";
+        for (var i = 0; i < data.data.length; i++) {
+            console.log(data.data[i]);
+            if (i % 2 == 0) {
+                if (i == (data.data.length - 1)) {
+                    html = html + '<ul><li><div><a href="news"><em style="display:none">' + data.data[i].Contents + '</em><ins style="display:none">' + data.data[i].Id + '</ins><img src=' + data.data[i].ImageUrl.replace('~', '') + ' /><h2>' + data.data[i].Title + '</h2><span>' + data.data[i].CreateTime + '</span><i></i></a></div><p>' + data.data[i].Abstract + '...</p></li></ul>';
+                } else {
+                    html = html + '<ul><li><div><a href="news"><em style="display:none">' + data.data[i].Contents + '</em><ins style="display:none">' + data.data[i].Id + '</ins><img src=' + data.data[i].ImageUrl.replace('~', '') + ' /><h2>' + data.data[i].Title + '</h2><span>' + data.data[i].CreateTime + '</span><i></i></a></div><p>' + data.data[i].Abstract + '...</p></li>';
+                }
+            } else {
+                html = html + '<li><div><a href="news"><em style="display:none">' + data.data[i].Contents + '</em><ins style="display:none">' + data.data[i].Id + '</ins><img src=' + data.data[i].ImageUrl.replace('~', '') + ' /><h2>' + data.data[i].Title + '</h2><span>' + data.data[i].CreateTime + '</span><i></i></a></div><p>' + data.data[i].Abstract + '...</p></li></ul>';
+
+            }
+        }
+        $(".multipleColumn11 .ulWrap").append(html);*/
 
 </script>
-
 <script type="text/javascript">
-    jQuery(".cp_pic_box").slide({
-        titCell: ".hd ul", mainCell: ".bd ul", effect: "leftLoop", autoPlay: true, vis: 3,
-        trigger: "click", delayTime: 300, interTime: 4000,
+    function caseL() {
+        jQuery(".cp_pic_box").slide({
+            titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "leftLoop",
+            autoPlay: false, vis: 3, delayTime: 500, interTime: 4000,
+            //effect: "leftLoop", autoPlay: true, vis: 3,trigger: "click", delayTime: 300, interTime: 4000,
+        });
+    }
+    $("body").on("click", ".picList li", function () {
+        var NewsUrl = $(this).find("em").html();
+        var NewsId = $(this).find("ins").html();
+        NewsUrl = NewsUrl.substring(1);
+        NewsUrl = HZNewUrl + NewsId + "&" + NewsUrl;
+        window.open(NewsUrl);
     });
 </script>
 <script type="text/javascript">
-    jQuery(".multipleColumn").slide({
-        titCell: ".hd ul", mainCell: ".bd .ulWrap", effect: "leftLoop",
-        autoPlay: false, vis: 2, delayTime: 500, interTime: 4000,
+    function newsL() {
+        jQuery(".multipleColumn").slide({
+            titCell: ".hd ul", mainCell: ".bd .ulWrap", autoPage: true, effect: "leftLoop",
+            autoPlay: false, vis: 2, delayTime: 500, interTime: 4000,
+        });
+    }
+    $("body").on("click", ".ulWrap li", function () {
+        var NewsUrl = $(this).find("em").html();
+        var NewsId = $(this).find("ins").html();
+        NewsUrl = NewsUrl.substring(1);
+        NewsUrl = HZNewUrl + NewsId + "&" + NewsUrl;
+        window.open(NewsUrl);
     });
 </script>
 <script>
@@ -292,7 +424,6 @@
         });
     }
 </script>
-
 <script src="~/Scripts/jssor.slider-21.1.6.mini.js"></script>
 
 <script type="text/javascript">
@@ -364,3 +495,73 @@
         /*responsive code end*/
     });
 </script>
+@*简介的焦点图滚动*@
+<script src="~/Scripts/jq22.js"></script>
+<script>
+    window.onload = function () {
+        var oBox = document.getElementById('box');
+        var oPrev = getByClass(oBox, 'prev')[0];
+        var oNext = getByClass(oBox, 'next')[0];
+        var oBigUl = getByClass(oBox, 'bigUl')[0];
+        var aLiBig = oBigUl.getElementsByTagName('li');
+        var oNumUl = getByClass(oBox, 'numberUl')[0];
+        var aLiNumber = oNumUl.getElementsByTagName('li');
+        var nowZindex = 1;
+        var now = 0;
+        function tab() {
+            for (var i = 0; i < aLiNumber.length; i++) {
+                aLiNumber[i].className = '';
+            }
+            aLiNumber[now].className = 'night';
+
+            aLiBig[now].style.zIndex = nowZindex++;
+            aLiBig[now].style.opacity = 0;
+            startMove(aLiBig[now], 'opacity', 100);
+
+
+        }
+
+        for (var i = 0; i < aLiNumber.length; i++) {
+            aLiNumber[i].index = i;
+            aLiNumber[i].onclick = function () {
+
+                if (this.index == now) return;
+                now = this.index;
+
+                tab();
+            }
+        }
+        oNext.onmouseover = oPrev.onmouseover = oBigUl.onmouseover = function () {
+            startMove(oPrev, 'opacity', 100);
+            startMove(oNext, 'opacity', 100)
+        }
+        oNext.onmouseout = oPrev.onmouseout = oBigUl.onmouseout = function () {
+            startMove(oPrev, 'opacity', 0);
+            startMove(oNext, 'opacity', 0)
+        }
+        oPrev.onclick = function () {
+            now--
+            if (now == -1) {
+                now = aLiNumber.length - 1;
+            }
+            tab();
+        }
+
+        oNext.onclick = function () {
+            now++
+            if (now == aLiNumber.length) {
+                now = 0;
+            }
+            tab();
+        }
+
+        var timer = setInterval(oNext.onclick, 5000)
+        oBox.onmouseover = function () {
+            clearInterval(timer)
+        }
+        oBox.onmouseout = function () {
+            timer = setInterval(oNext.onclick, 5000)//改变速度修改3000 ，例如3000=3秒钟
+        }
+    }
+</script>
+
