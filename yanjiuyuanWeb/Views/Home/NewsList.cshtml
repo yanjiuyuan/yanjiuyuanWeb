@@ -37,6 +37,7 @@
                 <ul>
                     <li v-for="d in data">
                         <em style="display:none">{{d.Contents}}</em>
+                        <ins style="display:none">{{d.Id}}</ins>
                         <img :src="d.ImageUrl.replace('~','')">
                         <dl>
                             <dt><a>{{d.Title}}</a></dt>
@@ -110,8 +111,9 @@
 <script type="text/javascript">
     $("body").on("click", ".zy_conbox li", function(){
         var NewsUrl = $(this).find("em").html();
+        var NewsId = $(this).find("ins").html();
         NewsUrl = NewsUrl.substring(1);
-        NewsUrl = "http://www.hustqz.com/Home/html?" + NewsUrl;
+        NewsUrl = HZNewUrl+NewsId+"&"+ NewsUrl;
         window.open(NewsUrl); 
     });
 </script>

@@ -196,6 +196,7 @@
     <Compile Include="Controllers\JobManangerController.cs" />
     <Compile Include="Controllers\LeaveWordController.cs" />
     <Compile Include="Controllers\NewsAndCaseManageController.cs" />
+    <Compile Include="Controllers\PicManagerController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="EF\EFHelper.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="Models\Jobs.cs" />
     <Compile Include="Models\LeaveWord.cs" />
     <Compile Include="Models\NewsAndCases.cs" />
+    <Compile Include="Models\PicInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -374,6 +376,8 @@
     <Content Include="Views\Home\TeamPower.cshtml" />
     <Content Include="Views\Home\PartyCreate.cshtml" />
     <Content Include="Views\Home\Notify.cshtml" />
+    <Content Include="Views\Home\newsDe.cshtml" />
+    <Content Include="Views\Home\caseDe.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
