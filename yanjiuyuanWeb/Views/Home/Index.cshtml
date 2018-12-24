@@ -389,8 +389,8 @@
         success: function (data) {
             newsL()
             caseL()
-            $("#box .bigUl").children("li").css("z-index", "1");
-            $("#box .numberUl").children("li").addClass("night");
+            $("#box .bigUl").find("li").eq(0).css("z-index", "1");
+            $("#box .numberUl").find("li").eq(0).addClass("night");
         }
     });
    
