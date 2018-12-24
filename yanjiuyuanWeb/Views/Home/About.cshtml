@@ -65,14 +65,11 @@
             <div v-show="urlParam.index == 3" id="content3">
                 <div class="" id="marquee1">
                     <ul>
-                        <li><a href=""><img src="../Content/img/About01.png" /></a></li>
-                        <li><a href=""><img src="../Content/img/About02.png" /></a></li>
-                        <li><a href=""><img src="../Content/img/About03.png" /></a></li>
-                        <li><a href=""><img src="../Content/img/About04.png" /></a></li>
-                        <li><a href=""><img src="../Content/img/About05.png" /></a></li>
-                        <li><a href=""><img src="../Content/img/About06.png" /></a></li>
-                        <li><a href=""><img src="../Content/img/About07.png" /></a></li>
-                        <li><a href=""><img src="../Content/img/About08.png" /></a></li>
+                        <li v-for="d of PicList">
+                            <a href="">
+                                <img :src="d.Path.replace('~','')"/>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="main">
@@ -138,6 +135,7 @@
         data: function () {
             return {
                 disabled: false,
+                PicList: [],
                 ruleForm: {
                     name: '',
                     contact: '',
@@ -168,15 +166,42 @@
             },
             resetForm(formName) {
                 this.$refs[formName].resetFields();
+            },
+            getDataFnc: function () {
+                //发送get请求
+                var that = this
+                $.ajax({
+                    type: "GET",
+                    url: "/PicManage/Read",
+                    data: { type: "发展历程", pageIndex: "1", pageSize: "10" },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        let PicList = []
+                        for (let d = 0; d < data.data.length; d++) {
+                            PicList.push(data.data[d])
+                        }
+                        that.PicList = PicList
+                        console.log(PicList);
+                    }
+                })
             }
         },
         created: function () {
-            this.indexLength = 5
-
+            this.indexLength = 5,
+            this.getDataFnc()
         }
     })
 
-
+    $.ajax({
+        type: "GET",
+        url: "/PicManage/Read",
+        data: { type: "发展历程", pageIndex: "1", pageSize: "10" },
+        dataType: "json",
+        success: function (data) {
+            Pic()
+        }
+    });
 </script>
 
 <script type="text/javascript">
@@ -256,10 +281,7 @@
 </script>
 <script src="~/Scripts/jquery.kxbdMarquee.js"></script>
 <script>
-
-    (function () {
-
+    function Pic() {
         $("#marquee1").kxbdMarquee({ direction: "left", isEqual: false });
-
-    })();
+    }
 </script>
