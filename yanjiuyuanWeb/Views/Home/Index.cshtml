@@ -265,16 +265,18 @@
                     <div class="prev"></div>
                     <div class="next"></div>
                     <ul class="bigUl">
-                        <li style="z-index:1"><a href="#"><img src="~/Content/img/COMPANY1.png" /></a></li>
-                        <li><a href="#"><img src="~/Content/img/COMPANY2.png" /></a></li>
-                        <li><a href="#"><img src="~/Content/img/COMPANY3.png" /></a></li>
-                        <li><a href="#"><img src="~/Content/img/COMPANY4.png" /></a></li>
+                        <li v-for="d of Pic">
+                            <a href="">
+                                <img :src="d.Path.replace('~','')" />
+                            </a>
+                        </li>
                     </ul>
                     <ul class="numberUl">
-                        <li class="night"><a href="javascript:;">1</a></li>
-                        <li><a href="javascript:;">2</a></li>
-                        <li><a href="javascript:;">3</a></li>
-                        <li><a href="javascript:;">4</a></li>
+                        <li v-for="(d, index) in Pic">
+                            <a href="javascript:;">
+                                {{ index }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="righttxt">
@@ -301,7 +303,8 @@
             return {
                 bannerList: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12',],
                 NewsList: [[], [], [], [], []],
-                casel: []
+                casel: [],
+                Pic:[]
             }
         },
         methods: {
@@ -322,6 +325,7 @@
                             NewsList[j].push(data.data[d])
                         }
                         that.NewsList = NewsList
+                        console.log("研究院新闻");
                         console.log(NewsList);
                     }
                 })
@@ -341,10 +345,31 @@
                             casel.push(data.data[d])
                         }
                         that.casel = casel
+                        console.log("机器人应用");
                         console.log(casel);
                     }
                 });
                 
+            },
+            getDataFnc: function () {
+                //发送get请求
+                var that = this
+                $.ajax({
+                    type: "GET",
+                    url: "/PicManage/Read",
+                    data: { type: "研究院概况", pageIndex: "1", pageSize: "10" },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        let Pic = []
+                        for (let d = 0; d < data.data.length; d++) {
+                            Pic.push(data.data[d])
+                        }
+                        that.Pic = Pic
+                        console.log("研究院概况");
+                        console.log(Pic);
+                    }
+                })
             }
 
 
@@ -352,6 +377,7 @@
         created: function () {
             this.getDataFnc()
             this.caseList()
+            this.getDataFnc
             
         }
     })
@@ -363,9 +389,11 @@
         success: function (data) {
             newsL()
             caseL()
+            $("#box .bigUl").children("li").css("z-index", "1");
+            $("#box .numberUl").children("li").addClass("night");
         }
     });
-
+   
         /*var html = "";
         for (var i = 0; i < data.data.length; i++) {
             console.log(data.data[i]);
@@ -498,70 +526,71 @@
 @*简介的焦点图滚动*@
 <script src="~/Scripts/jq22.js"></script>
 <script>
-    window.onload = function () {
-        var oBox = document.getElementById('box');
-        var oPrev = getByClass(oBox, 'prev')[0];
-        var oNext = getByClass(oBox, 'next')[0];
-        var oBigUl = getByClass(oBox, 'bigUl')[0];
-        var aLiBig = oBigUl.getElementsByTagName('li');
-        var oNumUl = getByClass(oBox, 'numberUl')[0];
-        var aLiNumber = oNumUl.getElementsByTagName('li');
-        var nowZindex = 1;
-        var now = 0;
-        function tab() {
-            for (var i = 0; i < aLiNumber.length; i++) {
-                aLiNumber[i].className = '';
+        window.onload = function () {
+            var oBox = document.getElementById('box');
+            var oPrev = getByClass(oBox, 'prev')[0];
+            var oNext = getByClass(oBox, 'next')[0];
+            var oBigUl = getByClass(oBox, 'bigUl')[0];
+            var aLiBig = oBigUl.getElementsByTagName('li');
+            var oNumUl = getByClass(oBox, 'numberUl')[0];
+            var aLiNumber = oNumUl.getElementsByTagName('li');
+            var nowZindex = 1;
+            var now = 0;
+            function tab() {
+                for (var i = 0; i < aLiNumber.length; i++) {
+                    aLiNumber[i].className = '';
+                }
+                aLiNumber[now].className = 'night';
+
+                aLiBig[now].style.zIndex = nowZindex++;
+                aLiBig[now].style.opacity = 0;
+                startMove(aLiBig[now], 'opacity', 100);
+
+
             }
-            aLiNumber[now].className = 'night';
 
-            aLiBig[now].style.zIndex = nowZindex++;
-            aLiBig[now].style.opacity = 0;
-            startMove(aLiBig[now], 'opacity', 100);
+            for (var i = 0; i < aLiNumber.length; i++) {
+                aLiNumber[i].index = i;
+                aLiNumber[i].onclick = function () {
 
+                    if (this.index == now) return;
+                    now = this.index;
 
-        }
-
-        for (var i = 0; i < aLiNumber.length; i++) {
-            aLiNumber[i].index = i;
-            aLiNumber[i].onclick = function () {
-
-                if (this.index == now) return;
-                now = this.index;
-
+                    tab();
+                }
+            }
+            oNext.onmouseover = oPrev.onmouseover = oBigUl.onmouseover = function () {
+                startMove(oPrev, 'opacity', 100);
+                startMove(oNext, 'opacity', 100)
+            }
+            oNext.onmouseout = oPrev.onmouseout = oBigUl.onmouseout = function () {
+                startMove(oPrev, 'opacity', 0);
+                startMove(oNext, 'opacity', 0)
+            }
+            oPrev.onclick = function () {
+                now--
+                if (now == -1) {
+                    now = aLiNumber.length - 1;
+                }
                 tab();
             }
-        }
-        oNext.onmouseover = oPrev.onmouseover = oBigUl.onmouseover = function () {
-            startMove(oPrev, 'opacity', 100);
-            startMove(oNext, 'opacity', 100)
-        }
-        oNext.onmouseout = oPrev.onmouseout = oBigUl.onmouseout = function () {
-            startMove(oPrev, 'opacity', 0);
-            startMove(oNext, 'opacity', 0)
-        }
-        oPrev.onclick = function () {
-            now--
-            if (now == -1) {
-                now = aLiNumber.length - 1;
-            }
-            tab();
-        }
 
-        oNext.onclick = function () {
-            now++
-            if (now == aLiNumber.length) {
-                now = 0;
+            oNext.onclick = function () {
+                now++
+                if (now == aLiNumber.length) {
+                    now = 0;
+                }
+                tab();
             }
-            tab();
-        }
 
-        var timer = setInterval(oNext.onclick, 5000)
-        oBox.onmouseover = function () {
-            clearInterval(timer)
+            var timer = setInterval(oNext.onclick, 5000)
+            oBox.onmouseover = function () {
+                clearInterval(timer)
+            }
+            oBox.onmouseout = function () {
+                timer = setInterval(oNext.onclick, 5000)//改变速度修改3000 ，例如3000=3秒钟
+            }
         }
-        oBox.onmouseout = function () {
-            timer = setInterval(oNext.onclick, 5000)//改变速度修改3000 ，例如3000=3秒钟
-        }
-    }
+    
 </script>
 
