@@ -4,9 +4,10 @@
 }
 
 <div class="DetailCon">
+    <div class="Title"></div>
     <div class="time"></div>
     <div class="visitingtime"></div>
-    <iframe src="" class="ListDetail"></iframe>
+    <iframe src="" class="ListDetail" id="ListDetail" name="ListDetail"></iframe>
 </div>
 <script type="text/javascript">
     var NewsUrl = window.location.search;
@@ -26,6 +27,7 @@
         success: function (data) {
             $(".time").html("发布时间：" + data.data.CreateTime);
             $(".visitingtime").html("访问量：" + data.data.visitingtime);
+            $(".Title").html(data.data.Title);
         }
     });
 </script>

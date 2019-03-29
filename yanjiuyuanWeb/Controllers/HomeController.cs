@@ -60,5 +60,9 @@ namespace yanjiuyuanWeb.Controllers
         {
             return View();
         }
+        public ActionResult PartyCreateDe()
+        {
+            return View();
+        }
     }
 }

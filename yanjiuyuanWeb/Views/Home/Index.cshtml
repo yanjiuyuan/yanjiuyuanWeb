@@ -301,7 +301,7 @@
         mixins: [mixin],
         data: function () {
             return {
-                bannerList: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12',],
+                bannerList: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
                 NewsList: [[], [], [], [], []],
                 casel: [],
                 Pic:[]
@@ -318,8 +318,8 @@
                     dataType: "json",
                     success: function (data) {
                         console.log(data);
-                        let NewsList = [[], [], [], [], []]
-                        for (let d = 0; d < data.data.length; d++) {
+                        var NewsList = [[], [], [], [], []];
+                        for (var d = 0; d < data.data.length; d++) {
                             var j = Math.floor(d / 2)
                             console.log(j)
                             NewsList[j].push(data.data[d])
@@ -340,8 +340,8 @@
                     dataType: "json",
                     success: function (data) {
                         console.log(data);
-                        let casel = []
-                        for (let d = 0; d < data.data.length; d++) {
+                        var casel = []
+                        for (var d = 0; d < data.data.length; d++) {
                             casel.push(data.data[d])
                         }
                         that.casel = casel
@@ -351,7 +351,7 @@
                 });
                 
             },
-            getDataFnc: function () {
+            getPic: function () {
                 //发送get请求
                 var that = this
                 $.ajax({
@@ -361,8 +361,8 @@
                     dataType: "json",
                     success: function (data) {
                         console.log(data);
-                        let Pic = []
-                        for (let d = 0; d < data.data.length; d++) {
+                        var Pic = []
+                        for (var d = 0; d < data.data.length; d++) {
                             Pic.push(data.data[d])
                         }
                         that.Pic = Pic
@@ -377,18 +377,21 @@
         created: function () {
             this.getDataFnc()
             this.caseList()
-            this.getDataFnc
+            this.getPic()
             
         }
     })
+    //getDataFnc()
    $.ajax({
         type: "GET",
         url: "/NewsAndCases/Read",
-        data: { bigType: "新闻", type: "研究院新闻", pageIndex: "1", pageSize: "16" },
+        data: { bigType: "新闻", type: "行业信息", pageIndex: "1", pageSize: "16" },
         dataType: "json",
-        success: function (data) {
+       success: function (data) {
+           console.log("行业信息")
             newsL()
-            caseL()
+           caseL()
+
             $("#box .bigUl").find("li").eq(0).css("z-index", "1");
             $("#box .numberUl").find("li").eq(0).addClass("night");
         }
@@ -412,6 +415,60 @@
 
 </script>
 <script type="text/javascript">
+    
+    function getDataFnc(){
+        //发送get请求
+        var that = this
+        $.ajax({
+            type: "GET",
+            url: "/NewsAndCases/Read",
+            data: { bigType: "新闻", type: "研究院新闻", pageIndex: "1", pageSize: "10" },
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                var NewsList = [[], [], [], [], []];
+                for (var d = 0; d < data.data.length; d++) {
+                    var j = Math.floor(d / 2)
+                    console.log(j)
+                    NewsList[j].push(data.data[d])
+                }
+                for (var d = 0; d < NewsList.length; d++) {
+                    var NewS = NewsList[d];
+                    var Li;
+                    for (var i = 0; i < NewS.length; i++) {
+                        Li = Li+'<li><em style = "display: none;" >' + NewS[i].Contents + '</em><ins style="display:none">' + NewS[i].Id + '</ins><div><a href="javascript:;"><img src="' + NewS[i].ImageUrl.replace("~", "") + '" /><h2>' + NewS[i].Title + '</h2><span>' + NewS[i].CreateTime + '</span><i></i></a></div><p>' + NewS[i].Abstract + '...</p></li>';                      
+                    }
+                    $(".ulWrap").append("<ul>" + Li + "</ul>");
+                }
+                /*$(".ulWrap").html('<ul style="float: left; width: 620px; ">
+                    < li >
+                    <em style="display: none;">/html/20190130/2019130161443.html</em>
+                    <ins style="display: none;">160</ins>
+                    <div><a href="javascript:;">
+                        <img src="\UploadFile\Images\图片420190130161439.png">
+                            <h2>泉州市智能制造公共实训基地落户泉州师范学院</h2>
+                            <span>2019-01-30 16:14:45</span>
+                            <i></i></a>
+                        </div>
+                        <p>泉州市智能制造公共实训基地落户泉州师范学院...</p>
+                    </li>
+                    <li>
+                        <em style="display: none;">/html/20190130/2019130155110.html</em>\
+                        <ins style="display: none;">158</ins>
+                        <div><a href="javascript:;">
+                            <img src="\UploadFile\Images\图片120190130155105.png">
+                                <h2>转发关于公示福建省2018年第一批拟认定高新技术企业名单的通知</h2>\
+                                    <span>2019-01-30 15:51:12</span> <i></i>
+                        </a></div>
+                            <p>转发关于公示福建省2018年第一批拟认定高新技术企业名单的通知...</p>
+                    </li></ul>')
+                
+                that.NewsList = NewsList*/
+                console.log("研究院新闻");
+                console.log(NewsList);
+            }
+        })
+    }
     function caseL() {
         jQuery(".cp_pic_box").slide({
             titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "leftLoop",

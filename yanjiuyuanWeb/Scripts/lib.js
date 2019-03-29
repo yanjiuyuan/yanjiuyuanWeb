@@ -31,7 +31,10 @@ function loadPage(url) {
     var param = url.split('?')[1]
     if (param) {
         var paramArr = param.split('&')
-        for (let p of paramArr) {
+        /*for (let p of paramArr) {
+            UrlObj[p.split('=')[0]] = p.split('=')[1]
+        }*/
+        for (var p = 0; p < paramArr.length; p++) {
             UrlObj[p.split('=')[0]] = p.split('=')[1]
         }
     }
@@ -173,6 +176,7 @@ var mixin = {
         newsList: ['研究院新闻', '视频短片', '媒体聚焦', '行业信息'],
         productList: ['机器人应用', '数控专用设备', '自动化生产线', '数字化车间'],
         teamList: ['校企合作案例', '人才培养集锦', '荣誉成果专利', '院士专家团队'],
+        partyCreateList: ['职工之家','支部建设'],
         pageSize: 5,
         totalRows: 0,
         currentPage: 1

@@ -57,7 +57,7 @@
                             </a>
                         </li>
                         <li :class="{cur:index==2}">
-                            <a href="/Home/about">
+                            <a href="/Home/about?index=1">
                                 <i class="img dh_02COMPASS"></i>
                                 <span>关于我们</span>
                             </a>
@@ -172,6 +172,14 @@
                         </div>
                         <div class="two_nav">
                             <span></span>
+                            <dl>
+                                <i></i>
+                                <dt><a href="/Home/partyCreate?index=1">职工之家</a></dt>
+                            </dl>
+                            <dl>
+                                <i></i>
+                                <dt><a href="/Home/partyCreate?index=2">支部建设</a></dt>
+                            </dl>
                         </div>
                         <div class="two_nav">
                             <span></span>
@@ -223,7 +231,7 @@
 </html>
 
 <script>
-     let outDemo =  new Vue({
+    let outDemo = new Vue({
         el: "#top_bg",
         mixins: [mixin],
         data: function () {
@@ -252,7 +260,7 @@
              var url = location.href
              setInterval(function () {
                  if (url.indexOf('hustqz') < 0) {
-                     location.href = 'http://www.hustqz.com'
+                     //location.href = 'http://www.hustqz.com'
                  }
              },300)
         }

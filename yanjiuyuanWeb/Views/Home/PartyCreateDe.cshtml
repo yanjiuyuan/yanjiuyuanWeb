@@ -1,12 +1,8 @@
 ﻿
 @{
-    /**/
-
-    ViewBag.Title = "新闻详情";
+    ViewBag.Title = "党群建设详情内容";
 }
-<!-- banner -->
-<!-- banner end -->
-<!-- 主体 -->
+
 <div class="DetailCon">
     <div class="Title"></div>
     <div class="time"></div>
@@ -24,7 +20,7 @@
     $.ajax({
         type: "GET",
         url: "/NewsAndCases/AddVisitingtime",
-        data: { id:NewsId},
+        data: { id: NewsId },
         cache: false,
         async: false,
         dataType: "json",
@@ -35,3 +31,4 @@
         }
     });
 </script>
+

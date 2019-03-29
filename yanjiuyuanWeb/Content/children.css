@@ -356,14 +356,13 @@
 .zy_anli ul li h3:hover i{
 	background-position-y:-10px; 
 }
-
 /*资讯中心*/
 /*.zy_news ul{
 	margin-top: 20px;
 }*/
 .zy_news ul li {
-	border-bottom: #ddd solid 1px;
-	padding:5px 0;
+    border-bottom: #ddd solid 1px;
+    padding: 5px 0;
 }
 .zy_news ul li img{
 	display: inline-block;
@@ -804,32 +803,64 @@ body {
     position: relative;
     width: 100%;
     padding: 20px 0;
-    background: linear-gradient(#2fb0ea,#4bafe0);
+    background: linear-gradient(#f1f1f1,#f6f6f6);
 }
 
     .DetailCon .ListDetail {
-        display:block;
+        display: block;
         margin: 0 auto;
-        width: 1300px;
+        width: 1200px;
         height: 1500px;
-        border: 1px solid #666;
-        background:#fff;
+        border: none;
+        background: #fff;
+        border-radius: 10px;
+        border: 1px solid #dedede;
     }
-    .DetailCon .time{
-        position:absolute;
-        top:75px;
-        left:40%;
-        font-size:16px;
-        line-height:24px;
-        color:#333;
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #fff;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, .3);
+    background-color: fff;
+}
+    .DetailCon .Title {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 40px;
+        font-weight: 600;
+        color: #0B467F;
     }
-    .DetailCon .visitingtime {
-        position: absolute;
-        top: 75px;
-        left: 50%;
+
+    .DetailCon .time {
+        max-width: 1200px;
+        margin: 20px auto;
         font-size: 16px;
         line-height: 24px;
         color: #333;
+        text-align: center;
+    }
+
+    .DetailCon .visitingtime {
+        max-width: 1200px;
+        margin: 0 auto;
+        font-size: 16px;
+        line-height: 24px;
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
     }
     /*发展历程滚动图*/
 #marquee1 {
