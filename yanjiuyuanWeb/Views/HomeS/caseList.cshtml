@@ -1,0 +1,236 @@
+﻿@{
+    Layout = "~/Views/Shared/IeLayout.cshtml";
+}
+
+<!-- banner -->
+<div class="zy_banner">
+    <img src="../Content/images/web/zy_banner01.jpg">
+    <div class="zy_title">
+        <div>
+            <h1>产品中心</h1>
+            <span>case show</span>
+        </div>
+    </div>
+</div>
+<!-- banner end -->
+<!-- 主体 -->
+<div class="zy_content" id="partPage">
+    <div class="wid_main">
+        <div class="zy_navbox">
+            <div class="weizhi">
+                <div>
+                    <p>
+                        <img src="../Content/images/web/PIN2.png">当前位置：<a href="index">首页</a> ><span>产品中心</span>
+                    </p>
+                </div>
+                <i></i>
+            </div>
+            <ul>
+                <li id="index1">
+                    <h2 onclick="TabSwitch('1')"><a>机器人应用</a><i></i></h2>
+                </li>
+                <li id="index2">
+                    <h2 onclick="TabSwitch('2')"><a>数控专用设备</a><i></i></h2>
+                </li>
+                <li id="index3">
+                    <h2 onclick="TabSwitch('3')"><a>自动化生产线</a><i></i></h2>
+                </li>
+                <li id="index4">
+                    <h2 onclick="TabSwitch('4')"><a>数字化车间</a><i></i></h2>
+                </li>
+            </ul>
+
+        </div>
+        <div class="zy_conbox zy_news">
+            <ul class="CaseList"></ul>
+            <div style="text-align: right;">
+                <div class="el-pagination">
+                    <span class="el-pagination__total">共 <em></em> 条</span>
+                    <span class="el-pagination__sizes">
+                        <div class="el-select">
+                            <div class="el-input el-input--suffix">
+                                <input autocomplete="off" value="5条/页" readonly="readonly" disabled type="text" class="el-input__inner">
+                            </div>
+                        </div>
+                    </span>
+                    <button type="button" class="btn-prev disabled" onclick="prev()"><i class="el-icon el-icon-arrow-left"></i></button>
+                    <ul class="el-pager"></ul>
+                    <button type="button" class="btn-next" onclick="next()"><i class="el-icon el-icon-arrow-right"></i></button>
+                    <span class="el-pagination__jump">
+                        前往
+                        <div class="el-input el-pagination__editor is-in-pagination">
+                            <input autocomplete="off" type="number" rows="2" max="6" min="1" validateevent="true" class="el-input__inner">
+                        </div>页
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    var data = ['机器人应用', '数控专用设备', '自动化生产线', '数字化车间'];
+    show()
+    function show() {
+        var url = document.location.search
+        var Id = url.substring(7)
+        if (Id == "") {
+            Id = 1
+        }
+        var type = ""
+        for (var i = 0; i < data.length; i++) {
+            var sum = i + 1
+            if (sum == Id) {
+                type = data[i]
+                console.log(data[i])
+            }
+        }
+        for (var i = 1; i <= 4; i++) {
+            $("#index" + i).removeClass("cur")
+        }
+        $("#index" + Id).addClass("cur")
+        getData(type, 1)
+    }
+    function TabSwitch(num) {
+        for (var i = 1; i <= 5; i++) {
+            $("#index" + i).removeClass("cur")
+        }
+        var type = ""
+        for (var i = 0; i < data.length; i++) {
+            var sum = i + 1
+            if (sum == num) {
+                type = data[i]
+                console.log(data[i])
+            }
+        }
+        $("#index" + num).addClass("cur")
+        getData(type, 1)
+    }
+
+    function getData(type, page) {
+        var that = this
+        var type = type
+        var pageIndex = page
+        var Newdata = []
+        var totalRows = "";
+        var pageNum = "";
+        $.ajax({
+            type: "GET",
+            url: "/NewsAndCases/Read",
+            data: { bigType: "产品", type: type, pageIndex: pageIndex, pageSize: "5" },
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                Newdata = data.data
+                totalRows = data.count
+                $(".el-pagination__total em").html(totalRows)
+                $(".el-pagination__editor .el-input__inner").val(pageIndex)
+                pageNum = Math.ceil(totalRows / 5)
+                PageLi(pageIndex, pageNum)
+                var Li = ""
+                for (var i = 0; i < Newdata.length; i++) {
+                    Li = Li + '<li><em style="display:none">' + Newdata[i].Contents + '</em><ins style="display:none">' + Newdata[i].Id + '</ins><img src="' + Newdata[i].ImageUrl.replace('~', '') + '"><dl><dt><a>' + Newdata[i].Title + '</a></dt><dd>' + Newdata[i].Abstract + '...</dd></dl><span><i>' + Newdata[i].CreateTime.substring(0, 7) + '</i><b>' + Newdata[i].CreateTime.substring(8, 10) + '</b></span ></li >'
+                }
+                $(".CaseList").html(Li)
+            }
+        })
+
+    }
+    function PageLi(a, b) {
+        var Li = ""
+        $(".btn-prev").removeClass("disabled")
+        $(".btn-next").removeClass("disabled")
+        if (b < 5) {
+            for (var i = 1; i <= b; i++) {
+                if (i == a) {
+                    Li = Li + '<li class="number active" >' + i + '</li >'
+                } else {
+                    Li = Li + '<li class="number" >' + i + '</li >'
+                }
+
+            }
+        } else {
+            if (b - a < 5) {
+                var c = parseInt(b - 4)
+                for (var i = c; i <= b; i++) {
+                    if (i == a) {
+                        Li = Li + '<li class="number active">' + i + '</li>'
+                    } else {
+                        Li = Li + '<li class="number" >' + i + '</li >'
+                    }
+
+                }
+            } else {
+                var d = parseInt(a)
+                d = parseInt(d + 4)
+                for (var i = a; i <= d; i++) {
+                    if (i == a) {
+                        Li = Li + '<li class="number active" >' + i + '</li >'
+                    } else {
+                        Li = Li + '<li class="number" >' + i + '</li >'
+                    }
+
+                }
+            }
+        }
+        if (a == 1) {
+            $(".btn-prev").addClass("disabled")
+        }
+        if (a == b) {
+            $(".btn-next").addClass("disabled")
+        }
+        $(".el-pager").html(Li)
+    }
+    $(".el-input__inner").blur(function () {
+        var sum = $(this).val()
+        var max = $(".el-pagination__total em").html()
+        max = Math.ceil(max / 5)
+        if (sum > max) {
+            sum = max
+        }
+        if (sum < 1) {
+            sum = "1"
+        }
+        var type = $(".cur h2 a").html()
+        getData(type, sum)
+        console.log(sum)
+    })
+    $("body").on("click", ".el-pager li", function () {
+        var num = parseInt($(this).html())
+        var type = $(".cur h2 a").html()
+        getData(type, num)
+    })
+    function prev() {
+        var num = parseInt($(".active").html())
+        num = num - 1
+        if (num >= 1) {
+            var type = $(".cur h2 a").html()
+            getData(type, num)
+        }
+
+    }
+    function next() {
+        var num = parseInt($(".active").html())
+        num = num + 1
+        var max = $(".el-pagination__total em").html()
+        max = Math.ceil(max / 5)
+        if (num <= max) {
+            var type = $(".cur h2 a").html()
+            getData(type, num)
+        }
+
+    }
+
+</script>
+<script type="text/javascript">
+    $("body").on("click", ".CaseList li", function () {
+        var NewsUrl = $(this).find("em").html();
+        var NewsId = $(this).find("ins").html();
+        NewsUrl = NewsUrl.substring(1);
+        NewsUrl = HZIeCaseUrl + NewsId + "&" + NewsUrl;
+        window.open(NewsUrl);
+    });
+</script>
+

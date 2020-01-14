@@ -46,16 +46,33 @@
         </div>
         <div class="zy_conbox zy_about">
             <div v-show="urlParam.index == 1" id="content1">
-                <img src="../Content/images/aboutpic.jpg">
+                <div id="box" class="leftpic">
+                    <div class="prev"></div>
+                    <div class="next"></div>
+                    <ul class="bigUl">
+                        <li v-for="d of Pic">
+                            <a href="">
+                                <img :src="d.Path.replace('~','')" />
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="numberUl">
+                        <li v-for="(d, index) in Pic">
+                            <a href="javascript:;">
+                                {{ index }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="txt">
                     <p>
-                        泉州华中科技大学智能制造研究院（以下简称泉州研究院），是泉州市人民政府与华中科技大学合作共建，于2014年11月20日成立的事业单位，是以集聚国内外高校、科研院所和创新团队的科技创新资源，面向泉州市经济发展和“数控一代”机械产品升级创新工程以及“泉州制造2025”的需求，打造具有强大技术创新、成果转化和产业化的支撑与服务平台，以实现“政、产、学、研、用、金”有机融合、“无缝”对接，提升泉州制造业的综合竞争力，促进泉州产业转型升级。
+                        泉州华中科技大学智能制造研究院（以下简称研究院），是泉州市人民政府与华中科技大学合作共建，于2014年11月20日成立的事业单位，坐落在福建泉州，是面向泉州市经济发展和“数控一代”机械产品升级创新工程以及“泉州制造2025”的需求，开展智能装备技术研发、机器人的集成与应用、咨询服务及人才培养为一体的新型研发机构。目前近3000平米的研发场地和3000平米的产业基地已投入使用，具备了研发、制造、组装、调试、培训能力。
                     </p>
                     <p>
-                        经过三年多的发展，研究院目前拥有一支118人的人才队伍，博士学位占20%, 硕士以上学位占45%，是省级院士工作站、省级工程技术研究中心，是福建省首批新型研发机构；近3000平米的研发场地和3000平米的产业基地已投入使用，具备了研发、制造、组装、调试、培训能力。截至目前，研究院在研项目30余项，其中4项为福建省重大科技专项，其余为市级项目；项目覆盖机械制造、石材瓷砖、食品饮料、纺织鞋服、水暖卫浴、工艺美术、大专院校等领域。研究院已完成的部分样机或生产线，目前已在嘉泰数控科技股份公司、泉州梅洋塑胶五金制品有限公司等20余家企业得到应用和试生产，应用企业实现经济效益超过2亿元。研究院积极致力于泉州当地的人才培养，与泉州信息工程学院、泉州轻工职业学院等十余所大中专院校开展了校企合作，共建“智能工业实训室”、“机器人公共实训基地”等人才培养实训平台，开展数控一代及智能制造技术培训，协助承办福建省职业院校技能大赛，累计培训学员650余人。截至目前，研究院申报并受理各种知识产权140项，其中发明专利35项、实用新型71项、软件著作权 34项；授权知识产权84项（其中发明5项、实用新型46项、软件著作权33项）。
+                        研究院着重三个平台建设，第一，技术创新与服务平台。以华中科技大学为依托，根据泉州当地产业发展需求，开展协同创新、技术研发、咨询服务。第二，人才培养平台。依托华中科技大学的师资和人才培养有事，聚集和培养一批高水平的技术研发、应用的专业技术人才。第三，产业孵化平台。以市场为导向，实现经济和社会效益双赢为目标，开展项目对接，企业孵化，实现成果转化的产业化。
                     </p>
                     <p>
-                        研究院组织团队先后参与编写了“泉州制造2025”行动计划纲要、泉州“数控一代”应用示范工程实施方案、泉州市机械设备产业转型升级路线图、数控一代典型案例集(泉州篇)、参与了2016年度泉州市 “中国制造2025”试点示范城市的申报工作、参与编写了泉州市千亩百亿3C产品产业链的建设规划等工作。同时配合泉州市或福建省，组织并参与智能制造推进制造业转型升级各类宣讲活动，为泉州实施“数控一代”应用示范工程和创建泉州市 “中国制造2025”试点示范城市等工作做出了重要贡献。
+                        泉州华中科技大学智能制造研究院目前拥有一支一百余人的人才队伍，博士学位占20%，硕士以上学位占45%。其中有中国工程院段正澄院士及其团队、以及来自华中科技大学机械学院、国家数控系统工程技术研究中心等一批高层次专家教授作为研究院强大的技术支持，使研究院具有较强的技术开发能力和协同攻关能力。
                     </p>
                 </div>
             </div>
@@ -67,13 +84,16 @@
                     <ul>
                         <li v-for="d of PicList">
                             <a href="">
-                                <img :src="d.Path.replace('~','')"/>
+                                <img :src="d.Path.replace('~','')" />
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="main">
+                    <h2>研究院发展历程</h2>
                     <ul class="time-axis"></ul>
+                    <h2>泉州华数机器人有限公司</h2>
+                    <ul class="time-axis2"></ul>
                 </div>
             </div>
             <div v-show="urlParam.index == 4" id="content4" style="text-align:center;">
@@ -97,15 +117,32 @@
             </div>
             <div v-show="urlParam.index == 5" id="content5">
                 <img class="img-center" src="../Content/images/address.jpg" style="width:58%;">
+                <img class="img-center" src="../Content/images/address1.jpg" style="width:58%;">
                 <div class="txt">
+                    <h2>泉州华中科技大学智能制造研究院</h2>
                     <p>
-                        电话: @*010-88888888*@
+                        电话: 0595-28857088
                     </p>
                     <p>
-                        邮箱: @*888888@qq.com*@
+                        传真：0595-28857688
+                    </p>
+                    <p>
+                        邮箱: qzhkdyjy@163.com
+                    </p>
+                    <p>
+                        销售热线：18627959176
                     </p>
                     <p>
                         地址: 福建省泉州市丰泽区北清东路518号数控一代创新中心10-13楼
+                    </p>
+                </div>
+                <div class="txt">
+                    <h2>泉州华中科技大学智能制造研究院产业化基地</h2>
+                    <p>
+                        电话（传真）：0595-22800090
+                    </p>
+                    <p>
+                        地址：福建省泉州市洛江区双阳街道塘西工业区二期A-3
                     </p>
                 </div>
                 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -136,6 +173,7 @@
             return {
                 disabled: false,
                 PicList: [],
+                Pic: [],
                 ruleForm: {
                     name: '',
                     contact: '',
@@ -185,11 +223,32 @@
                         console.log(PicList);
                     }
                 })
+            },
+            getPic: function () {
+                //发送get请求
+                var that = this
+                $.ajax({
+                    type: "GET",
+                    url: "/PicManage/Read",
+                    data: { type: "研究院概况", pageIndex: "1", pageSize: "10" },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        var Pic = []
+                        for (var d = 0; d < data.data.length; d++) {
+                            Pic.push(data.data[d])
+                        }
+                        that.Pic = Pic
+                        console.log("研究院概况");
+                        console.log(Pic);
+                    }
+                })
             }
         },
         created: function () {
             this.indexLength = 5,
-            this.getDataFnc()
+                this.getDataFnc()
+            this.getPic()
         }
     })
 
@@ -200,6 +259,8 @@
         dataType: "json",
         success: function (data) {
             Pic()
+            $("#box .bigUl").find("li").eq(0).css("z-index", "1");
+            $("#box .numberUl").find("li").eq(0).addClass("night");
         }
     });
 </script>
@@ -247,7 +308,7 @@
         achievement: ''
     },
     {
-        date: '2015-2018',
+        date: '2015--2018',
         title: '与泉州师范学院、宁德师范学院、闽南理工学院、泉州信息工程学院、黎明职业大学、泉州理工职业学院、泉州轻工职业学院、福建省长汀职业中专学校等院校共建实训实地',
         achievement: ''
     },
@@ -265,8 +326,30 @@
         date: '2018年07月',
         title: '获得中国科协企业工作办公室院士专家工作站认证资格',
         achievement: ''
+    }, {
+        date: '2018年11月',
+        title: '福建省高新技术企业',
+        achievement: ''
+    }, {
+        date: '2018年12月',
+        title: '荣获泉州市五一先锋号',
+        achievement: ''
+    }, {
+        date: '2019年01月',
+        title: '荣获泉州市新型研发机构',
+        achievement: ''
     }];
 
+    var dimeAxis2 = [{
+        date: '2016年01月',
+        title: '泉州装备制造协会第一届理事会单位',
+        achievement: ''
+    },
+    {
+        date: '2019年03月',
+        title: '福建省高新技术企业',
+        achievement: ''
+    }];
 
     $(function () {
         $.each(dimeAxis, function (i, e) {
@@ -277,6 +360,14 @@
                 '</li>';
             $('.time-axis').append(html);
         });
+        $.each(dimeAxis2, function (i, e) {
+            var html = '<li class="time-axis-item">' +
+                '<div class="time-axis-date">' + e.date + '<span></span></div>' +
+                '<div class="time-axis-title">' + e.title + '</div>' +
+                '<p class="time-axis-achievement">' + e.achievement + '</p>' +
+                '</li>';
+            $('.time-axis2').append(html);
+        });
     });
 </script>
 <script src="~/Scripts/jquery.kxbdMarquee.js"></script>
@@ -284,4 +375,73 @@
     function Pic() {
         $("#marquee1").kxbdMarquee({ direction: "left", isEqual: false });
     }
+</script>
+<script src="~/Scripts/jq22.js"></script>
+<script>
+    window.onload = function () {
+        var oBox = document.getElementById('box');
+        var oPrev = getByClass(oBox, 'prev')[0];
+        var oNext = getByClass(oBox, 'next')[0];
+        var oBigUl = getByClass(oBox, 'bigUl')[0];
+        var aLiBig = oBigUl.getElementsByTagName('li');
+        var oNumUl = getByClass(oBox, 'numberUl')[0];
+        var aLiNumber = oNumUl.getElementsByTagName('li');
+        var nowZindex = 1;
+        var now = 0;
+        function tab() {
+            for (var i = 0; i < aLiNumber.length; i++) {
+                aLiNumber[i].className = '';
+            }
+            aLiNumber[now].className = 'night';
+
+            aLiBig[now].style.zIndex = nowZindex++;
+            aLiBig[now].style.opacity = 0;
+            startMove(aLiBig[now], 'opacity', 100);
+
+
+        }
+
+        for (var i = 0; i < aLiNumber.length; i++) {
+            aLiNumber[i].index = i;
+            aLiNumber[i].onclick = function () {
+
+                if (this.index == now) return;
+                now = this.index;
+
+                tab();
+            }
+        }
+        oNext.onmouseover = oPrev.onmouseover = oBigUl.onmouseover = function () {
+            startMove(oPrev, 'opacity', 100);
+            startMove(oNext, 'opacity', 100)
+        }
+        oNext.onmouseout = oPrev.onmouseout = oBigUl.onmouseout = function () {
+            startMove(oPrev, 'opacity', 0);
+            startMove(oNext, 'opacity', 0)
+        }
+        oPrev.onclick = function () {
+            now--
+            if (now == -1) {
+                now = aLiNumber.length - 1;
+            }
+            tab();
+        }
+
+        oNext.onclick = function () {
+            now++
+            if (now == aLiNumber.length) {
+                now = 0;
+            }
+            tab();
+        }
+
+        var timer = setInterval(oNext.onclick, 5000)
+        oBox.onmouseover = function () {
+            clearInterval(timer)
+        }
+        oBox.onmouseout = function () {
+            timer = setInterval(oNext.onclick, 5000)//改变速度修改3000 ，例如3000=3秒钟
+        }
+    }
+
 </script>

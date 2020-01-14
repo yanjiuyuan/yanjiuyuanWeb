@@ -1,0 +1,112 @@
+﻿@{
+    Layout = "~/Views/Shared/IeLayout.cshtml";
+}
+<style>
+    .text {
+        font-size: 14px;
+    }
+
+    .item {
+        margin-bottom: 18px;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: "";
+    }
+
+    .clearfix:after {
+        clear: both
+    }
+
+    .box-card {
+        width: 500px;
+        margin-top: 20px;
+    }
+</style>
+<!-- banner -->
+<div class="zy_banner">
+    <img src="../Content/images/web/zy_banner01.jpg">
+    <div class="zy_title">
+        <div>
+            <h1>通知公告</h1>
+            <span> Notice and Announcement </span>
+        </div>
+    </div>
+</div>
+<!-- banner end -->
+<!-- 主体 -->
+<div class="zy_content" id="partPage">
+    <div class="wid_main">
+        <div class="zy_navbox">
+            <div class="weizhi">
+                <div>
+                    <p>
+                        <img src="../Content/images/web/PIN2.png">当前位置：<a href="index">首页</a> ><span>通知公告</span>
+                    </p>
+                </div>
+                <i></i>
+            </div>
+            <ul>
+                <li id="index1">
+                    <h2 onclick="TabSwitch('1')"><a>人事任免</a><i></i></h2>
+                </li>
+                <li id="index2">
+                    <h2 onclick="TabSwitch('2')"><a>资料下载</a><i></i></h2>
+                </li>
+                <li id="index3">
+                    <h2 onclick="TabSwitch('3')"><a>人才招聘</a><i></i></h2>
+                </li>
+            </ul>
+
+        </div>
+        <div class="zy_conbox zy_about">
+            <div id="content1">
+                <p>人事任免</p>
+            </div>
+            <div id="content2">
+                <p>资料下载</p>
+            </div>
+            <div id="content3">
+                <div slot="header" class="clearfix">
+                    <span>应聘请联系</span>
+                </div>
+                <div class="text item">联 系 人:唐小姐</div>
+                <div class="text item">联系电话:0595-28857088</div>
+                <div class="text item">电子邮件:kika0031@126.com</div>
+                <div class="text item">通讯地址:福建省泉州市丰泽区北清东路518号数控一代科技创新中心13楼</div>
+                <div class="text item"><a href="http://company.qzrc.com/99238.html">大泉州人才网链接</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        var url = document.location.search
+        var Id = url.substring(7)
+        if (Id == "") {
+            Id = "1"
+        }
+        console.log(Id)
+        for (var i = 1; i <= 5; i++) {
+            $("#index" + i).removeClass("cur")
+            $("#content" + i).hide()
+        }
+        $("#index" + Id).addClass("cur")
+        $("#content" + Id).show()
+    })
+    function TabSwitch(sum) {
+        for (var i = 1; i <= 5; i++) {
+            $("#index" + i).removeClass("cur")
+            $("#content" + i).hide()
+        }
+        $("#index" + sum).addClass("cur")
+        $("#content" + sum).show()
+    }
+
+
+</script>
+

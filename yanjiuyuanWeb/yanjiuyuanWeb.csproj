@@ -193,6 +193,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\SwaggerNet.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HomeSController.cs" />
     <Compile Include="Controllers\JobManangerController.cs" />
     <Compile Include="Controllers\LeaveWordController.cs" />
     <Compile Include="Controllers\NewsAndCaseManageController.cs" />
@@ -379,6 +380,20 @@
     <Content Include="Views\Home\newsDe.cshtml" />
     <Content Include="Views\Home\caseDe.cshtml" />
     <Content Include="Views\Home\PartyCreateDe.cshtml" />
+    <Content Include="Views\HomeS\Index.cshtml" />
+    <Content Include="Views\HomeS\About.cshtml" />
+    <Content Include="Views\HomeS\caseDetail.cshtml" />
+    <Content Include="Views\HomeS\caseList.cshtml" />
+    <Content Include="Views\HomeS\News.cshtml" />
+    <Content Include="Views\HomeS\NewsList.cshtml" />
+    <Content Include="Views\HomeS\Notify.cshtml" />
+    <Content Include="Views\HomeS\PartyCreate.cshtml" />
+    <Content Include="Views\HomeS\TeamPower.cshtml" />
+    <Content Include="Views\HomeS\Contact.cshtml" />
+    <Content Include="Views\HomeS\newsDe.cshtml" />
+    <Content Include="Views\HomeS\caseDe.cshtml" />
+    <Content Include="Views\HomeS\PartyCreateDe.cshtml" />
+    <Content Include="Views\Shared\IeLayout.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

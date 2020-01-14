@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = "~/Views/Shared/IeLayout.cshtml";
+}
+
+<div class="DetailCon">
+    <div class="Title"></div>
+    <div class="time"></div>
+    <div class="visitingtime"></div>
+    <iframe src="" class="ListDetail" id="ListDetail" name="ListDetail"></iframe>
+</div>
+<script type="text/javascript">
+    var NewsUrl = window.location.search;
+    var NewsId = NewsUrl.substring(NewsUrl.indexOf("="), NewsUrl.indexOf('&'));
+    NewsId = NewsId.substring(1);
+    NewsUrl = NewsUrl.substring(NewsUrl.indexOf('&'));
+    NewsUrl = NewsUrl.substring(1);
+    NewsUrl = HZIeUrl + NewsUrl;
+    $(".ListDetail").attr("src", NewsUrl);
+    $.ajax({
+        type: "GET",
+        url: "/NewsAndCases/AddVisitingtime",
+        data: { id: NewsId },
+        cache: false,
+        async: false,
+        dataType: "json",
+        success: function (data) {
+            $(".time").html("发布时间：" + data.data.CreateTime);
+            $(".visitingtime").html("访问量：" + data.data.visitingtime);
+            $(".Title").html(data.data.Title);
+        }
+    });
+    var iframe = document.getElementById("ListDetail");
+    $(iframe).load(function () {
+        reinitIframe("ListDetail")
+    });  
+</script>
+

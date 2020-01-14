@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="~/Content/index.css" type="text/css">
     <link rel="stylesheet" href="~/Content/children.css" type="text/css">
     @*<script>
-        if (!document.location.host.indexof("hustqz") >= 0)
-                location.href = "http://www.hustqz.com"
-    </script>*@
+            if (!document.location.host.indexof("hustqz") >= 0)
+                    location.href = "http://www.qhimi.com"
+        </script>*@
     <script src="~/Scripts/jquery-1.11.0.min.js"></script>
     <script src="~/Scripts/jquery.SuperSlide.2.1.1.js"></script>
 
@@ -155,15 +155,19 @@
                             <div>
                                 <dl>
                                     <i></i>
-                                    <dt><a href="/Home/teamPower?index=1">院士工作站</a></dt>
+                                    <dt><a href="/Home/teamPower?index=1">校企合作案例</a></dt>
                                 </dl>
                                 <dl>
                                     <i></i>
-                                    <dt><a href="/Home/teamPower?index=2">科研团队</a></dt>
+                                    <dt><a href="/Home/teamPower?index=2">人才培养集锦</a></dt>
                                 </dl>
                                 <dl>
                                     <i></i>
-                                    <dt><a href="/Home/teamPower?index=3">知识产权</a></dt>
+                                    <dt><a href="/Home/teamPower?index=3">荣誉成果专利</a></dt>
+                                </dl>
+                                <dl>
+                                    <i></i>
+                                    <dt><a href="/Home/teamPower?index=4">院士专家团队</a></dt>
                                 </dl>
                             </div>
                         </div>
@@ -210,7 +214,6 @@
         <div class="contentbox">
 
             @RenderBody()
-
             <!-- footer -->
             <div class="footer content">
                 <div class="wid_main">
@@ -225,12 +228,44 @@
 
         </div>
     </div>
-    <div id="tempPage"></div>
+    @*<div id="tempPage"></div>*@
     @RenderSection("scripts", required: false)
 </body>
 </html>
 
 <script>
+    indexCur()
+    function indexCur() {
+        switch (getweb()) {
+            case 1: IeSubst(); break;
+        }
+    }
+    function IeSubst() {
+        var Path = document.location
+        var pathname = document.location.pathname
+        if (pathname.indexOf('Home') >= 0) {
+            var url = 'http://www.qhimi.com/HomeS/' + pathname.substring(6);
+            location.href = url
+        }
+        if (pathname.length == 1) {
+            location.href = 'http://www.qhimi.com/HomeS/'
+        }
+    }
+    function getweb() {
+        if (!!window.ActiveXObject || "ActiveXObject" in window) {
+            return 1;
+        }
+        if (navigator.userAgent.indexOf("Firefox") != -1) {
+            return 2;
+        }
+        if (navigator.userAgent.indexOf("Chrome") != -1) {
+            return 3;
+        }
+        if (navigator.userAgent.indexOf("Safari") != -1) {
+            return 4;
+        }
+    }
+
     let outDemo = new Vue({
         el: "#top_bg",
         mixins: [mixin],
@@ -266,6 +301,5 @@
         }
     })
     console.log('hello?')
-
 </script>
 

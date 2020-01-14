@@ -64,7 +64,7 @@ li{ list-style-type:none;}
 }
 .top_logo{
 	float: left;
-	max-width: 380px;
+	max-width: 540px;
 	height: 70px;
 	margin-top: 10px;
 }
@@ -860,7 +860,10 @@ li{ list-style-type:none;}
 .bigUl li {
     position: absolute;
 }
-
+.bigUl li img{
+    width:630px;
+    height:420px;
+}
 .numberUl {
     position: absolute;
     right: 0;

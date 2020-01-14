@@ -25,36 +25,36 @@ function logout() {
     location.reload()
 }
 
-function loadPage(url) {
-    TaskId = 0
-    NodeId = 0
-    var param = url.split('?')[1]
-    if (param) {
-        var paramArr = param.split('&')
-        /*for (let p of paramArr) {
-            UrlObj[p.split('=')[0]] = p.split('=')[1]
-        }*/
-        for (var p = 0; p < paramArr.length; p++) {
-            UrlObj[p.split('=')[0]] = p.split('=')[1]
-        }
-    }
-    $("#tempPage").load(url)
-}
-function goHome() {
-    loadPage('/Main/approval')
-    return true
-}
-function goError() {
-    if (!DingData.nickName || DingData.nickName == 'undefined') {
-        loadPage('/Login/Error?errorStr=免登失败，重新打开页面试试')
-        return true
-    }
-}
+//function loadPage(url) {
+//    TaskId = 0
+//    NodeId = 0
+//    var param = url.split('?')[1]
+//    if (param) {
+//        var paramArr = param.split('&')
+//        /*for (let p of paramArr) {
+//            UrlObj[p.split('=')[0]] = p.split('=')[1]
+//        }*/
+//        for (var p = 0; p < paramArr.length; p++) {
+//            UrlObj[p.split('=')[0]] = p.split('=')[1]
+//        }
+//    }
+//    $("#tempPage").load(url)
+//}
+//function goHome() {
+//    loadPage('/Main/approval')
+//    return true
+//}
+//function goError() {
+//    if (!DingData.nickName || DingData.nickName == 'undefined') {
+//        loadPage('/Login/Error?errorStr=免登失败，重新打开页面试试')
+//        return true
+//    }
+//}
 
-function loadHtml(parentId, childId) {
-    $("#" + parentId).html('')
-    $("#" + parentId).append($("#" + childId))
-}
+//function loadHtml(parentId, childId) {
+//    $("#" + parentId).html('')
+//    $("#" + parentId).append($("#" + childId))
+//}
 
 function _cloneObj(obj) {
     return $.extend(true, {}, obj)
@@ -164,7 +164,14 @@ function _getQueryString(name) {
     if (r != null) return unescape(r[2]); return null;
 }
 
-
+function reinitIframe(id) {
+    var iframe = document.getElementById(id);
+    var bHeight = iframe.contentWindow.document.body.scrollHeight;
+    var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+    var height = Math.max(bHeight, dHeight);
+    iframe.height = height;
+    console.log(height);
+}
 
 
 
@@ -187,7 +194,7 @@ var mixin = {
     },
     methods: {
         //获取url参数
-        getUrlParam() {
+        getUrlParam: function () {
             var searchStr = window.location.search
             if (searchStr.length < 1) {
                 this.urlParam.index = 0
